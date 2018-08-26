@@ -17,9 +17,16 @@ module.exports = function(app) {
 
     db.Clients.create({
       client_name: client.name,
+      client_company: client.company,
       client_email: client.email,
       client_phone: client.phone,
-      payment_info: client.payment
+      client_address1: client.address1,
+      client_address2: client.address2,
+      client_city: client.city,
+      client_state: client.state,
+      client_zip: client.zip
+    }).then(function(dbClient) {
+      res.json(dbClient);
     }).catch(function(err) {
       console.log(err);
       res.json(err);

@@ -17,7 +17,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: true,
       validate: {
-        len: [1,100]
+        len: [0,100]
       }
     },
     client_email: {
@@ -46,28 +46,28 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: true,
       validate: {
-        len: [1,100]
+        len: [0,100]
       }
     },
     client_city: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [1:100]
+        len: [1,100]
       }
     },
     client_state: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [1:100]
+        len: [1,100]
       }
     },
     client_zip: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [1:10]
+        len: [1,10]
       }
     }
   });
