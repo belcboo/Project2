@@ -7,12 +7,12 @@ module.exports = function(app) {
   });
 
   // Loads Client > New Client
-  app.get("/client/new", function(req, res){
+  app.get("/clients/new", function(req, res){
     res.render("clients_new");
   });
 
   // Loads Client List
-  app.get("/client/new", function(req, res){
+  app.get("/clients", function(req, res){
     res.render("clients");
   });
 

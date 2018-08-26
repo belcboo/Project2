@@ -2,10 +2,10 @@ var db = require("../models");
 
 module.exports = function(app) {
 
-  app.get("/api/clients/new"),
-    function(req, res) {
+  app.get("/api/clients"), function(req, res) {
       db.Clients.findAll({}).then(function(dbClients) {
         res.json(dbClients);
+        console.log(dbClients);
       }).catch(function(err) {
         console.log(err);
         res.json(err);
