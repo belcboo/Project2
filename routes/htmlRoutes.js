@@ -8,8 +8,14 @@ module.exports = function(app) {
 
   // Loads Client > New Client
   app.get("/client/new", function(req, res){
-    res.render("client_create");
+    res.render("clients_new");
   });
+
+  // Loads Client List
+  app.get("/client/new", function(req, res){
+    res.render("clients");
+  });
+
   // app.get("/", function(req, res) {
   //   db.Example.findAll({}).then(function(dbExamples) {
   //     res.render("index", {
