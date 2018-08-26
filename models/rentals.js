@@ -1,10 +1,17 @@
 module.exports = function(sequelize, DataTypes) {
-    var clients = sequelize.define("clients", {
-      // Giving the Author model a name of type STRING
+    var rentals = sequelize.define("rentals", {
+      // Giving the rentals model a name of type STRING
       name: DataTypes.STRING
     });
 
-    Product_id: {
+    rental_id:{
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    autoIncrement: true,
+    primaryKey: true
+  },
+
+    product_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         validate: {
@@ -23,39 +30,47 @@ module.exports = function(sequelize, DataTypes) {
       product_name: {
         type: DataTypes.STRING,
         allowNull: false,
+        validate: {
         len: [1,100]
       }
-    
     },
+
     rental_days: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      validate: {
       len: [1,100]
     }
-
 },
+
 rental_qty: {
     type: DataTypes.INTEGER,
      allowNull: false,
+     validate: {
     len: [1,100]
-}
-
+  }
 },
+
 rental_total: {
     type: DataTypes.INTEGER,
      allowNull: false,
+     validate: {
     len: [1,100]
-}
-
+  }
 },
 
-    clients.associate = function(models) {
-      // Associating Author with Posts
-      // When an Author is deleted, also delete any associated Posts
-      clients.hasMany(models.rentals, {
-        onDelete: "cascade"
+    rentals.associate = function(models) {
+      // Associating clients with rentals
+      rentals.hasMany(models.clients, {
+      });
+    };
+
+    rentals.associate = function(models) {
+      // Associating inventory with rentals
+      rentals.hasMany(models.inventory, {
       });
     };
   
-    return clients;
+
+    return rentals;
   };
