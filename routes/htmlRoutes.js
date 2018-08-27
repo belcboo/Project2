@@ -11,20 +11,25 @@ module.exports = function(app) {
     res.render("index2");
   });
 
+
+  // IMPORTANT!!
+  // If you want to work on any route withouth having to login, just delete
+  // the "isAuthenticated,". Make sure to enable it after you finish!
+  
   // Loads Client > New Client
-  app.get("/client/new", isAuthenticated, (req, res) => {
+  app.get("/client/new", isAuthenticated, function(req, res) {
     res.render("clients_new");
   });
 
-  app.get("/client/dashboard", isAuthenticated, (req, res) => {
+  app.get("/client/dashboard", isAuthenticated, function(req, res) {
     res.render("clients_dashboard");
   });
 
-  app.get("/rental/dashboard", isAuthenticated, (req, res) => {
+  app.get("/rental/dashboard", isAuthenticated, function(req, res) {
     res.render("rental_dashboard");
   });
 
-  app.get("/inventory/dashboard", isAuthenticated, (req, res) => {
+  app.get("/inventory/dashboard", isAuthenticated, function(req, res) {
     res.render("inventory_dashboard");
   });
 
