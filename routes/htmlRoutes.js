@@ -1,27 +1,41 @@
 var db = require("../models");
 
+var isAuthenticated = require('../helpers/isAuthenticated');
+
 module.exports = function(app) {
   // Load index page
-  app.get("/", function(req, res){
+  app.get("/", function(req, res) {
+    if (req.user) {
+      res.redirect("rental_dashboard")
+    };
     res.render("index2");
   });
 
   // Loads Client > New Client
-  app.get("/client/new", function(req, res){
+  app.get("/client/new", isAuthenticated, (req, res) => {
     res.render("clients_new");
   });
 
-  app.get("/client/dashboard", function(req, res){
+  app.get("/client/dashboard", isAuthenticated, (req, res) => {
     res.render("clients_dashboard");
   });
 
-  app.get("/rental/dashboard", function(req, res){
+  app.get("/rental/dashboard", isAuthenticated, (req, res) => {
     res.render("rental_dashboard");
   });
 
-  app.get("/inventory/dashboard", function(req, res){
+  app.get("/inventory/dashboard", isAuthenticated, (req, res) => {
     res.render("inventory_dashboard");
   });
+
+  app.get("/login", (req, res) => {
+    if (req.user) {
+      res.redirect("rental_dashboard")
+    };
+    res.render("index2");
+  });
+
+
   // app.get("/", function(req, res) {
   //   db.Example.findAll({}).then(function(dbExamples) {
   //     res.render("index", {
