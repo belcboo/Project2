@@ -39,6 +39,13 @@ require("./routes/apiRoutes")(app);
 require("./routes/passportRoutes")(app);
 require("./routes/htmlRoutes")(app);
 
+// DIsplays all routes loaded.
+app._router.stack.forEach(function(r){
+  if (r.route && r.route.path){
+    console.log(r.route.path)
+  }
+});
+
 var syncOptions = { force: false };
 
 // If running a test, set syncOptions.force to true

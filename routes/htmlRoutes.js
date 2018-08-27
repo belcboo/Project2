@@ -5,9 +5,9 @@ var isAuthenticated = require('../helpers/isAuthenticated');
 module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
-    if (req.user) {
-      res.redirect("rental_dashboard")
-    };
+    // if (req.user) {
+    //   res.render("rental_dashboard")
+    // };
     res.render("index2");
   });
 
@@ -15,7 +15,7 @@ module.exports = function(app) {
   // IMPORTANT!!
   // If you want to work on any route withouth having to login, just delete
   // the "isAuthenticated,". Make sure to enable it after you finish!
-  
+
   // Loads Client > New Client
   app.get("/client/new", isAuthenticated, function(req, res) {
     res.render("clients_new");
@@ -35,9 +35,16 @@ module.exports = function(app) {
 
   app.get("/login", (req, res) => {
     if (req.user) {
-      res.redirect("rental_dashboard")
+      res.render("rental_dashboard")
     };
     res.render("index2");
+  });
+
+  app.get("/signup_testBootCampLoL", (req, res) => {
+    if (req.user) {
+      res.render("rental_dashboard")
+    };
+    res.render("signup");
   });
 
   // Render 404 page for any unmatched routes
