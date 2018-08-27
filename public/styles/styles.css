@@ -1,3 +1,14 @@
 .list-group-item {
   line-height: 2.5;
+};
+
+nav{
+  background-color: #FF7100;
+  border-bottom-style: solid;
+  border-bottom-width: 1rem;
+  color: #FFFFFF;
+};
+
+body{
+  background-color: #F3F4F5;
 }
