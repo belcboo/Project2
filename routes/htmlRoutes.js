@@ -8,7 +8,19 @@ module.exports = function(app) {
 
   // Loads Client > New Client
   app.get("/client/new", function(req, res){
-    res.render("client_create");
+    res.render("clients_new");
+  });
+
+  app.get("/client/dashboard", function(req, res){
+    res.render("clients_dashboard");
+  });
+
+  app.get("/rental/dashboard", function(req, res){
+    res.render("rental_dashboard");
+  });
+
+  app.get("/inventory/dashboard", function(req, res){
+    res.render("inventory_dashboard");
   });
   // app.get("/", function(req, res) {
   //   db.Example.findAll({}).then(function(dbExamples) {

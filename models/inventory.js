@@ -1,13 +1,11 @@
-module.exports = function (sequelize, DataTypes) {
-  var inventory = sequelize.define("inventory", {
-
+module.exports = function(sequelize, DataTypes) {
+  var Inventory = sequelize.define("Inventory", {
     product_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       autoIncrement: true,
       primaryKey: true
     },
-
     product_name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -15,7 +13,6 @@ module.exports = function (sequelize, DataTypes) {
         len: [1, 100]
       }
     },
-
     inventory_qty: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -23,7 +20,6 @@ module.exports = function (sequelize, DataTypes) {
         len: [1, 100]
       }
     },
-
     available_inventory: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -31,7 +27,6 @@ module.exports = function (sequelize, DataTypes) {
         len: [1, 100]
       }
     },
-
     product_image: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -39,21 +34,17 @@ module.exports = function (sequelize, DataTypes) {
         len: [1, 100]
       }
     },
-
     rentalPrice_day: {
-      type: DataTypes.Decimal,
+      type: DataTypes.DECIMAL,
       allowNull: false,
       validate: {
         len: [10, 4]
       }
     }
   });
-
-  inventory.associate = function (models) {
+  Inventory.associate = function(models) {
     // Associating rentals with inventory
-    inventory.belongsTo(models.rentals, {
-    });
+    Inventory.belongsTo(models.Rentals, {});
   };
-
-  return inventory;
+  return Inventory;
 };
