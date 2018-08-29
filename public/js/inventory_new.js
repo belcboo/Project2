@@ -1,5 +1,6 @@
-$(function() {
+$(document).ready(function() {
  
+
 $("#newInventorySubmit").on("submit", function(event) {
   event.preventDefault();
 
@@ -11,22 +12,19 @@ $("#newInventorySubmit").on("submit", function(event) {
     rentalPrice_day: $("rentalPrice_day").val().trim(),
   };
 
-  if (!(newInventoryItem.product_name && 
-    newInventoryItem.product_name && 
-    newInventoryItem.inventory_qty && 
-    newInventoryItem.available_inventory &&
-    newInventoryItem.product_image &&
+  if (!(newInventoryItem.product_name || 
+    newInventoryItem.product_name ||
+    newInventoryItem.inventory_qty || 
+    newInventoryItem.available_inventory ||
+    newInventoryItem.product_image ||
     newInventoryItem.rentalPrice_day)) {
     alert("You must enter values for all data fields!");
+    console.log("Inside if");
     return;
   }
-  $.ajax("/api/inventory", {
-    type: "POST",
-    data: newInventoryItem
-  }).then(
+  $.post("/api/inventory/new", newInventoryItem).then(
     function() {
       console.log("added new inventory item");
-      location.reload();
     }
   );
 });

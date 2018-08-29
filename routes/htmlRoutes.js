@@ -17,20 +17,31 @@ module.exports = function(app) {
   // the "isAuthenticated,". Make sure to enable it after you finish!
 
   // Loads Client > New Client
-  app.get("/client/new", isAuthenticated, function(req, res) {
+  app.get("/client/new", function(req, res) {
     res.render("clients_new");
   });
 
-  app.get("/client/dashboard", isAuthenticated, function(req, res) {
+  app.get("/client/dashboard", function(req, res) {
     res.render("clients_dashboard");
   });
 
-  app.get("/rental/dashboard", isAuthenticated, function(req, res) {
+  app.get("/rental/dashboard", function(req, res) {
     res.render("rental_dashboard");
   });
 
-  app.get("/inventory/dashboard", isAuthenticated, function(req, res) {
-    res.render("inventory_dashboard");
+  app.get("/inventory/new", function(req, res) {
+    res.render("inventory_new.handlebars");
+  });
+
+  app.get("/inventory/dashboard", function(req, res) {
+    db.Inventory.findAll({}).then(function(data){
+      var hbsObject = {
+        inventory:data
+      };
+      console.log(hbsObject);
+      res.render("inventory_dashboard", hbsObject);
+    })
+    
   });
 
   app.get("/login", (req, res) => {
