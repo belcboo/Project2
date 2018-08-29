@@ -38,7 +38,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.DECIMAL,
       allowNull: false,
       validate: {
-        len: [10, 4]
+        len: [0, 4]
       }
     }
   });

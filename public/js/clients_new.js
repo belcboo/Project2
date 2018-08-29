@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
   //Updates the title to match the actual page.
-  $("#title").text("Create Client | RubykIO");
+  $("#title").text("Create Client | Rubyk.IO");
 
   //On click event linked to the submit button.
   $("#newClientSubmit").on("click", function(event) {

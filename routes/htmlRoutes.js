@@ -33,6 +33,11 @@ module.exports = function(app) {
     res.render("inventory_dashboard");
   });
 
+  app.get("/inventory/new", function(req, res) {
+    res.render("inventory_new");
+  });
+
+
   app.get("/login", (req, res) => {
     if (req.user) {
       res.render("rental_dashboard")
