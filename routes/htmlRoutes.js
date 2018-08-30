@@ -31,6 +31,34 @@ module.exports = function(app) {
     })
   });
 
+
+  app.get("/inventory/dashboard", function(req, res) {
+    db.Inventory.findAll({}).then(function(data) {
+      var hbsObject = {
+        inventory: data
+      };
+      console.log(hbsObject);
+      res.render("inventory_dashboard", hbsObject);
+    });
+  });
+
+  app.get("/rental/dashboard", isAuthenticated, function(req, res) {
+    res.render("rental_dashboard");
+  });
+
+  app.get("/rental/new", function(req, res) {
+    db.Clients.findAll({}).then(function(data) {
+      var hbsObject = {
+        clients: data
+      };
+      console.log(hbsObject);
+      res.render("rental_new", hbsObject);
+    });
+  });
+
+  app.get("/inventory/dashboard", isAuthenticated, function(req, res) {
+    res.render("inventory_dashboard");
+
   app.get("/rental/dashboard", function(req, res) {
     res.render("rental_dashboard");
   });

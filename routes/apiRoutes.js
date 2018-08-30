@@ -23,6 +23,21 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/api/userData", (req, res) => {
+    console.log(req.user);
+    if (!req.user) {
+      res.json({
+        "message": "unauth acess"
+      });
+    } else {
+      res.json({
+        email: req.user.email,
+        id: req.user.id
+      });
+    }
+  });
+
+
   app.post("/api/inventory/new", function(req, res) {
     var inventory = req.body;
 
@@ -39,5 +54,6 @@ module.exports = function(app) {
       res.json(err);
     });
   });
+
 };
 

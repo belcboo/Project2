@@ -1,14 +1,15 @@
-.list-group-item {
-  line-height: 2.5;
-};
+html, body {
+  height: 100%;
+  /* important to vertically align the container */
+  margin: 0;
+  padding: 0;
+}
 
-nav{
-  background-color: #FF7100;
-  border-bottom-style: solid;
-  border-bottom-width: 1rem;
-  color: #FFFFFF;
-};
-
-body{
-  background-color: #F3F4F5;
+.vertical-center {
+  min-height: 100%;
+  /* Fallback for browsers do NOT support vh unit */
+  min-height: 100vh;
+  /* These two lines are counted as one 🙂       */
+  display: flex;
+  align-items: center;
 }
