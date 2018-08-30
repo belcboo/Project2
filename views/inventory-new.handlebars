@@ -1,0 +1,84 @@
+<div class="container">
+
+  <!-- *************************************************************************
+  MENU BUTTONS: This are the buttons that appear at the top. Each handlebars
+  manage it's owns buttons, Needs to set the "active" class in the desired button.
+  ****************************************************************************-->
+  <div class="row mt-2 mb-2">
+    <div class="col-sm-12">
+      <ul class="nav nav-pills justify-content-end">
+        <li class="nav-item">
+          <a class="nav-link active btn-dark" href="#">ADD INVENTORY</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="/clients">CLIENTS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="/rental">RENTAL</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="/inventory">INVENTORY</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- *************************************************************************
+  This row contains the body. All the body is  inside a jumbotron. Please refer
+  to the next comment to delete and add your code, Leave this code untouched.
+  ****************************************************************************-->
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="jumbotron jumbotron-fluid">
+        <div class="ml-5 mr-5">
+          <!-- *************************************************
+            ADD YOUR CODE FOR THE BODY OF THE HANDLEBARS HERE.
+          ************************************************* -->
+          <h1 class="">ADD NEW INVENTORY</h1>
+          <hr>
+          <form class="">
+            <div class="form-row">
+              <div class="form-group col-sm-12 col-md-6">
+                <label for="Product_name">Product Name:</label>
+                <input type="text" class="form-control" id="product_name" placeholder="Product's Name">
+              </div>
+              <div class="form-group col-sm-12 col-md-6">
+                <label for="client_company">Inventory Quantity:</label>
+                <input type="number" class="form-control" id="inventory_qty" placeholder="0">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-sm-12 col-md-6">
+                <label for="available_inventory">Available Inventory:</label>
+                <input type="number" class="form-control" id="available_inventory" placeholder="0">
+              </div>
+              <div class="form-group col-sm-12 col-md-6">
+                <label for="product_image">Product Image:</label>
+                <input type="text" class="form-control" id="product_image" placeholder="Type URL Here">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-sm-12 col-md-6">
+                <label for="rentalPrice_day">Rental Price/Day:</label>
+                <input type="number" class="form-control" id="rentalPrice_day" placeholder="0.00">
+              </div>
+            <hr>
+          </form>
+          <div class="button">
+            <div class="col-md-4">
+          <button type="submit" class="btn btn-dark" id="newInventorySubmit">Submit</button>
+          </div>
+          </div>
+          <!-- *******************************************************
+             YOUR CODE FOR THE BODY OF THE HANDLEBAR SHOULD END HERE.
+          ******************************************************** -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- **************************************************
+           EDIT TO POINT TO YOUR .JS HERE:
+*****************************************************-->
+<script type="text/javascript" src="/js/inventory_new.js"></script>

@@ -1,0 +1,192 @@
+<div class="container">
+
+  <hr>
+  <div class="row mt-2 mb-2">
+    <div class="col-sm-12">
+      <ul class="nav nav-pills justify-content-center">
+        <li class="nav-item">
+          <a class="nav-link  active btn-dark" href="/rental/dashboard">RENTAL</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="/client/dashboard">CLIENTS</a>
+        </li>
+        <li class="nav-item">
+          <a class=" nav-link disabled" href="/inventory/dashboard">INVENTORY</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <hr>
+  <!-- SUB MENU -->
+  <div class="row mt-2 mb-2">
+    <div class="col-sm-12">
+      <ul class="nav nav-pills justify-content-center">
+        <li class="nav-item">
+          <a class="nav-link disabled" href="/client/dashboard ">DASHBOARD</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="/client/list">CLIENT LIST</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active btn-dark" href="/client/new">NEW ORDER</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <hr>
+
+  <!-- START CODING HERE -->
+
+  <!-- *************************************************************************
+  This row contains the body. All the body is  inside a jumbotron. Please refer
+  to the next comment to delete and add your code, Leave this code untouched.
+  ****************************************************************************-->
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="jumbotron jumbotron-fluid">
+        <div class="ml-5 mr-5">
+          <!-- *************************************************
+            ADD YOUR CODE FOR THE BODY OF THE HANDLEBARS HERE.
+          ************************************************* -->
+          <h1 class="">NEW RENTAL ORDER</h1>
+          <hr>
+          <form class="">
+            <h4>CLIENT SECTION:</h4>
+            <div class="form-row">
+              <div class="form-group col-sm-12 col-md-6">
+                <label for="client_name">Company's Name:</label>
+                <input type="text" class="form-control" id="client_name" placeholder="Client's Name">
+              </div>
+              <div class="form-group col-sm-12 col-md-6">
+                <label for="client_name">Conctact Person:</label>
+                <input type="text" class="form-control" id="client_name" placeholder="Client's Name">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-sm-12 col-md-6">
+                <label for="client_name">Contact's Email:</label>
+                <input type="text" class="form-control" id="client_name" placeholder="Client's Name">
+              </div>
+              <div class="form-group col-sm-12 col-md-6">
+                <label for="client_name">Contact's Phone:</label>
+                <input type="text" class="form-control" id="client_name" placeholder="Client's Name">
+              </div>
+            </div>
+            <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#clientsModal" id="addClient">Select Client</button>
+            <hr>
+            <h4>DATE SECTION:</h4>
+            <div class="form-row">
+              <div class="form-group col-sm-12 col-md-6">
+                <label for="client_company">Date Start:</label>
+                <input type="date" class="form-control" id="datepicker" placeholder="Compnay Name">
+              </div>
+              <div class="form-group col-sm-12 col-md-6">
+                <label for="client_email">Date Ends:</label>
+                <input type="date" class="form-control" id="datepicker" placeholder="client@email.com">
+              </div>
+            </div>
+            <hr>
+            <button type="submit" class="btn btn-dark" id="addProduct">Add Product</button>
+            <hr>
+            <button type="submit" class="btn btn-dark" id="newClientSubmit">Submit</button>
+          </form>
+          <!-- *******************************************************
+             YOUR CODE FOR THE BODY OF THE HANDLEBAR SHOULD END HERE.
+          ******************************************************** -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- MODALS -->
+
+<!-- CLIENTS MODAL -->
+<div class="modal fade" id="clientsModal" tabindex="-1" role="dialog" aria-labelledby="clientsModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="clientsModalTitle">CLIENT SELECTOR</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <td>Company</td>
+              <td>Contact Name</td>
+              <td>Email</td>
+              <td>Phone Number</td>
+            </tr>
+          </thead>
+          <tbody>
+            <div>
+              {{#each clients}}
+                <tr>
+                  <td>{{this.client_company}}</td>
+                  <td>{{this.client_name}}</td>
+                  <td>{{this.client_email}}</td>
+                  <td>{{this.client_phone}}</td>
+                </tr>
+              {{/each}}
+            </div>
+          </tbody>
+        </table>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button id="loginBtn" type="button" class="btn btn-dark">Login</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- INVENTORY MODAL -->
+<div class="modal fade" id="clientsModal" tabindex="-1" role="dialog" aria-labelledby="clientsModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="clientsModalTitle">CLIENT SELECTOR</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <td>Product</td>
+              <td>Available Stock</td>
+              <td>Price</td>
+            </tr>
+          </thead>
+          <tbody>
+            <div>
+              {{#each inventory}}
+                <tr>
+                  <td>{{this.product_name}}</td>
+                  <td>{{this.available_inventory}}</td>
+                  <td>{{this.rentalPrice_day}}</td>
+                </tr>
+              {{/each}}
+            </div>
+          </tbody>
+        </table>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button id="loginBtn" type="button" class="btn btn-dark">Login</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- **************************************************
+           EDIT TO POINT TO YOUR .JS HERE:
+*****************************************************-->
+<script type="text/javascript" src="/js/rental_new.js"></script>
