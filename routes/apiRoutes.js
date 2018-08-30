@@ -29,7 +29,7 @@ module.exports = function(app) {
     db.Inventory.create({
       product_name: inventory.product_name,
       inventory_qty: inventory.inventory_qty,
-      available_qty: inventory.available_inventory,
+      available_inventory: inventory.available_inventory,
       product_image: inventory.product_image,
       rentalPrice_day: inventory.rentalPrice_day
     }).then(function(dbInventory) {

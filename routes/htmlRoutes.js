@@ -22,7 +22,13 @@ module.exports = function(app) {
   });
 
   app.get("/client/dashboard", function(req, res) {
-    res.render("clients_dashboard");
+    db.Clients.findAll({}).then(function(data){
+      var hbsObject = {
+        client:data
+      };
+      console.log(hbsObject);
+      res.render("inventory_dashboard", hbsObject);
+    })
   });
 
   app.get("/rental/dashboard", function(req, res) {

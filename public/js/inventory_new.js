@@ -1,15 +1,18 @@
 $(document).ready(function() {
- 
 
-$("#newInventorySubmit").on("submit", function(event) {
+
+$("#title").text("New Inventory | RubykIO");
+
+
+$("#newInventorySubmit").on("click", function(event) {
   event.preventDefault();
 
   var newInventoryItem = {
     product_name: $("#product_name").val().trim(),
-    inventory_qty: $("#client_phone").val().trim(),
+    inventory_qty: $("#inventory_qty").val().trim(),
     available_inventory: $("#available_inventory").val().trim(),
-    product_image: $("product_image").val().trim(),
-    rentalPrice_day: $("rentalPrice_day").val().trim(),
+    product_image: $("#product_image").val().trim(),
+    rentalPrice_day: $("#rentalPrice_day").val().trim(),
   };
 
   if (!(newInventoryItem.product_name || 
