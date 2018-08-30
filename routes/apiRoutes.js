@@ -2,16 +2,6 @@ var db = require("../models");
 
 module.exports = function(app) {
 
-  app.get("/api/clients/new"),
-    function(req, res) {
-      db.Clients.findAll({}).then(function(dbClients) {
-        res.json(dbClients);
-      }).catch(function(err) {
-        console.log(err);
-        res.json(err);
-      });
-    };
-
   app.post("/api/clients/new", function(req, res) {
     var client = req.body;
 
@@ -32,4 +22,22 @@ module.exports = function(app) {
       res.json(err);
     });
   });
+
+  app.post("/api/inventory/new", function(req, res) {
+    var inventory = req.body;
+
+    db.Inventory.create({
+      product_name: inventory.product_name,
+      inventory_qty: inventory.inventory_qty,
+      available_inventory: inventory.available_inventory,
+      product_image: inventory.product_image,
+      rentalPrice_day: inventory.rentalPrice_day
+    }).then(function(dbInventory) {
+      res.json(dbInventory);
+    }).catch(function(err) {
+      console.log(err);
+      res.json(err);
+    });
+  });
 };
+
