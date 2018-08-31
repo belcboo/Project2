@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
   //Updates the title to match the actual page.
-  $("#title").text("Rental Order | Rubyk.IO");
+  $("#title").text("New Order | Rubyk.IO");
 
   //Updates Menu Colors:
   $("#dashboardMenu").addClass('btn-outline-secondary');
