@@ -1,18 +1,18 @@
+$(document).ready(function() {
+
+//Updates the title to match the actual page.
+$("#title").text("Add New Inventory | RubykIO");
+
+//Updates Menu Colors:
+$("#dashboardMenu").addClass('btn-outline-secondary');
+$("#rentalDrop").addClass('btn-outline-secondary');
+$("#clientDrop").addClass('btn-outline-secondary');
+$("#inventoryDrop").addClass('btn-outline-danger');
+
 var db = require("../models");
 
 
 module.exports = function(app) {
-
-  app.get("/api/inventory/new"),
-    function(req, res) {
-      db.Inventory.findAll({}).then(function(dbClients) {
-        res.json(dbInventory);
-      }).catch(function(err) {
-        console.log(err);
-        res.json(err);
-      });
-    };
-
   app.post("/api/inventory/new", function(req, res) {
     var inventory = req.body;
 
@@ -30,3 +30,5 @@ module.exports = function(app) {
     });
   });
 };
+
+});
