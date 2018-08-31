@@ -60,7 +60,7 @@ db.sequelize.sync(syncOptions).then(function() {
   app.listen(PORT, function() {
     if (mode !== 'production') {
             var opn = require('opn');
-            opn(`http://localhost:${PORT}`, { app: ['google chrome'] })
+            opn(`http://localhost:${PORT}`, { app: ['firefox'] })
         }
         console.log(`👋  Hey there I'm 👂 ing on Port: ${PORT}`);
   });
