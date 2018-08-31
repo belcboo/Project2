@@ -1,17 +1,29 @@
 <div class="container">
   <!-- MAIN MENU -->
-  <hr>
+  <!-- <hr>
   <div class="row mt-2 mb-2">
     <div class="col-sm-12">
       <ul class="nav nav-pills justify-content-center">
         <li class="nav-item">
-          <a class="nav-link active btn-dark" href="/rental">DASHBOARD</a>
+          <a class="nav-link btn btn-outline-danger" href="/rental">DASHBOARD</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled" href="/rental/dashboard">RENTAL</a>
+          <a class="nav-link dropdown-toggle text-secondary" href="rental/new" id="rentalDrop" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          RENTAL
+        </a>
+          <div class="dropdown-menu" aria-labelledby="rentalDrop">
+            <a class="dropdown-item" href="/rental/active">ORDERS</a>
+            <a class="dropdown-item" href="/rental/invoices">INVOICES</a>
+          </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link active btn-dark" href="/client/dashboard">CLIENTS</a>
+          <a class="nav-link dropdown-toggle btn-outline-secondary" href="client/new" id="clientDrop" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          CLIENTS
+        </a>
+          <div class="dropdown-menu" aria-labelledby="clientDrop">
+            <a class="dropdown-item" href="/client/new">NEW CLIENT</a>
+            <a class="dropdown-item" href="/client/list">CLIENT LIST</a>
+          </div>
         </li>
         <li class="nav-item">
           <a class=" nav-link disabled" href="/inventory/dashboard">INVENTORY</a>
@@ -19,9 +31,12 @@
       </ul>
     </div>
   </div>
-  <hr>
+  <hr> -->
+
+  <!-- NOTE: DASHBOARD DOESN'T HAVE SUBMENU. ALL THE OTHER MODULES DO HAVE A SUB MENU. -->
+
   <!-- SUB MENU -->
-  <div class="row mt-2 mb-2">
+  <!-- <div class="row mt-2 mb-2">
     <div class="col-sm-12">
       <ul class="nav nav-pills justify-content-center">
 
@@ -34,8 +49,10 @@
       </ul>
     </div>
   </div>
-  <hr>
+  <hr> -->
 
   <!-- START CODING HERE -->
 
 </div>
+
+</footer>

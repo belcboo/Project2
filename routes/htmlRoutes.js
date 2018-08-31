@@ -18,17 +18,17 @@ module.exports = function(app) {
     res.render("clients_new");
   });
 
-  app.get("/client/dashboard", function(req, res) {
+  app.get("/dashboard", isAuthenticated, function(req, res) {
     db.Clients.findAll({}).then(function(data){
       var hbsObject = {
         client:data
       };
       console.log(hbsObject);
-      res.render("inventory_dashboard", hbsObject);
+      res.render("dashboard", hbsObject);
     });
   });
 
-  app.get("/inventory/dashboard", isAuthenticated, function(req, res) {
+  app.get("/inventory/list", isAuthenticated, function(req, res) {
     db.Inventory.findAll({}).then(function(data) {
       var hbsObject = {
         inventory: data

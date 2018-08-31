@@ -1,40 +1,5 @@
 <div class="container">
 
-  <hr>
-  <div class="row mt-2 mb-2">
-    <div class="col-sm-12">
-      <ul class="nav nav-pills justify-content-center">
-        <li class="nav-item">
-          <a class="nav-link  active btn-dark" href="/rental/dashboard">RENTAL</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="/client/dashboard">CLIENTS</a>
-        </li>
-        <li class="nav-item">
-          <a class=" nav-link disabled" href="/inventory/dashboard">INVENTORY</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-  <hr>
-  <!-- SUB MENU -->
-  <div class="row mt-2 mb-2">
-    <div class="col-sm-12">
-      <ul class="nav nav-pills justify-content-center">
-        <li class="nav-item">
-          <a class="nav-link disabled" href="/client/dashboard ">DASHBOARD</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="/client/list">CLIENT LIST</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active btn-dark" href="/client/new">NEW ORDER</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-  <hr>
-
   <!-- START CODING HERE -->
 
   <!-- *************************************************************************
@@ -48,14 +13,17 @@
           <!-- *************************************************
             ADD YOUR CODE FOR THE BODY OF THE HANDLEBARS HERE.
           ************************************************* -->
-          <h1 class="">NEW RENTAL ORDER</h1>
+          <h3 class="">RENTAL ORDER</h3>
           <hr>
           <form class="">
-            <h4>CLIENT SECTION:</h4>
+            <h4>CLIENT INFORMATION:</h4>
+            <div class="text-right">
+              <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#clientsModal" id="addClient">SELECT CLIENT</button>
+            </div>
             <div class="form-row">
               <div class="form-group col-sm-12 col-md-6">
                 <label for="client_name">Company's Name:</label>
-                <input type="text" class="form-control" id="client_name" placeholder="Client's Name">
+                <input type="text" class="form-control" id="client_name" placeholder="Company">
               </div>
               <div class="form-group col-sm-12 col-md-6">
                 <label for="client_name">Conctact Person:</label>
@@ -65,30 +33,60 @@
             <div class="form-row">
               <div class="form-group col-sm-12 col-md-6">
                 <label for="client_name">Contact's Email:</label>
-                <input type="text" class="form-control" id="client_name" placeholder="Client's Name">
+                <input type="text" class="form-control" id="client_name" placeholder="example@domain.com">
               </div>
               <div class="form-group col-sm-12 col-md-6">
                 <label for="client_name">Contact's Phone:</label>
-                <input type="text" class="form-control" id="client_name" placeholder="Client's Name">
+                <input type="text" class="form-control" id="client_name" placeholder="(123)456-7890">
               </div>
             </div>
-            <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#clientsModal" id="addClient">Select Client</button>
             <hr>
-            <h4>DATE SECTION:</h4>
+            <h4>RENTAL DATES:</h4>
             <div class="form-row">
               <div class="form-group col-sm-12 col-md-6">
                 <label for="client_company">Date Start:</label>
-                <input type="date" class="form-control" id="datepicker" placeholder="Compnay Name">
+                <input type="date" class="form-control" id="datepicker" placeholder="">
               </div>
               <div class="form-group col-sm-12 col-md-6">
                 <label for="client_email">Date Ends:</label>
-                <input type="date" class="form-control" id="datepicker" placeholder="client@email.com">
+                <input type="date" class="form-control" id="datepicker" placeholder="">
               </div>
             </div>
             <hr>
-            <button type="submit" class="btn btn-dark" id="addProduct">Add Product</button>
+            <h4>PRODUCTS IN ORDER:</h4>
+            <div class="text-right">
+              <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#inventoryModal" id="addProduct">ADD PRODUCT</button>
+            </div>
+            <br>
+            <table class="table table-striped bg-light">
+              <thead>
+                <tr>
+                  <td>Qty</td>
+                  <td>Product</td>
+                  <td>USD Price/Day</td>
+                  <td>Total</td>
+                </tr>
+              </thead>
+              <tbody>
+                <div>
+                  {{#each clients}}
+                    <tr>
+                      <td>{{this.client_company}}</td>
+                      <td>{{this.client_name}}</td>
+                      <td>{{this.client_email}}</td>
+                      <td>{{this.client_phone}}</td>
+                    </tr>
+                  {{/each}}
+                </div>
+              </tbody>
+            </table>
             <hr>
-            <button type="submit" class="btn btn-dark" id="newClientSubmit">Submit</button>
+            <h4 id="orderTotal">ORDER TOTAL:</h4>
+            <hr>
+            <hr>
+            <div class="text-right">
+              <button type="submit" class="btn btn-outline-danger" data-toggle="modal" data-target="#clientsModal" id="submitOrder">SUBMIT ORDER</button>
+            </div>
           </form>
           <!-- *******************************************************
              YOUR CODE FOR THE BODY OF THE HANDLEBAR SHOULD END HERE.
@@ -161,7 +159,7 @@
             <tr>
               <td>Product</td>
               <td>Available Stock</td>
-              <td>Price</td>
+              <td>Price/Day/USD</td>
             </tr>
           </thead>
           <tbody>

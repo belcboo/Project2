@@ -24,8 +24,8 @@
   <!-- Image and text -->
   <nav class="navbar navbar-light bg-light navbar-expand-lg">
     <div class="container">
-      <a class="navbar-brand" href="/">
-      <img src="/img/logo.png" height="100" class="d-inline-block align-top" alt="">
+      <a class="navbar-brand" href="/dashboard">
+      <img src="/img/logo.png" height="95" class="d-inline-block align-top" alt="">
     </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -33,13 +33,12 @@
       <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
         <ul class="navbar-nav">
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle  btn btn-outline-danger text-danger" href="#" id="loginID" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Logged in as:
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <a class="dropdown-item" href="/logout">Log Out</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
+              <a class="dropdown-item" data-toggle="modal" data-target="#contactSupport">Support</a>
             </div>
           </li>
         </ul>
@@ -47,15 +46,99 @@
 
   </nav>
 
+  <!-- MENU: Each handlebars js needs to update the classes to display the right button. -->
+
+  <hr>
+  <div class="row mt-2 mb-2">
+    <div class="col-sm-12">
+      <ul class="nav nav-pills justify-content-center">
+        <li class="nav-item">
+          <a class="nav-link" href="/dashboard" id="dashboardMenu">DASHBOARD</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link dropdown-toggle" href="rental/new" id="rentalDrop" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          RENTAL
+        </a>
+          <div class="dropdown-menu" aria-labelledby="rentalDrop">
+            <a class="dropdown-item" href="/rental/new">NEW ORDERS</a>
+            <a class="dropdown-item" href="/rental/active">ORDERS</a>
+            <a class="dropdown-item" href="/rental/invoices">INVOICES</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link dropdown-toggle" href="client/new" id="clientDrop" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          CLIENTS
+        </a>
+          <div class="dropdown-menu" aria-labelledby="clientDrop">
+            <a class="dropdown-item" href="/client/new">NEW CLIENT</a>
+            <a class="dropdown-item" href="/client/list">CLIENT LIST</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link dropdown-toggle" href="/inventory/new" id="inventoryDrop" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          INVENTORY
+        </a>
+          <div class="dropdown-menu" aria-labelledby="clientDrop">
+            <a class="dropdown-item" href="/inventory/new">NEW PRODUCT</a>
+            <a class="dropdown-item" href="/inventory/list">PRODUCTS LIST</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <hr>
+
+
 
   {{{body}}}
 
 
 
-<script type="text/javascript" src="/js/main.js">
+  <!-- Modal Login-->
+  <div class="modal fade" id="contactSupport" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCenterTitle">CONTACT SUPPORT.</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="subject">Subject:</label>
+              <select class="form-control" id="exampleFormControlSelect1">
+                <option>Report Bug.</option>
+                <option>Request Help With Error.</option>
+                <option>Others.</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="contact">Email:</label>
+              <input type="userInfo" class="form-control" id="contact" aria-describedby="userHelp" placeholder="Your Email">
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea class="form-control" id="message" rows="4"></textarea>
+              <div id="contactMsg"></div>
+          </form>
+          <div id="errorMsg" class="text-danger"> </div>
+          </div>
+          <div class="modal-footer">
+            <button id="contactBtn" type="button" class="btn btn-dark">Send</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
-</script>
+    <script type="text/javascript" src="/js/main.js"></script>
+
+
 </body>
+
+
 
 
 
