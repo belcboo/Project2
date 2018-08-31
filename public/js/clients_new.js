@@ -20,18 +20,28 @@ $(document).ready(function() {
       zip: $("#client_zip").val().trim()
     };
 
-    // send an AJAX POST-request with jQuery
+    if (!(newClient.name || 
+      newClient.company ||
+      newClient.email || 
+      newClient.phone ||
+      newClient.address1 ||
+      newClient.address2 ||
+      newClient.city ||
+      newClient.state ||
+      newClient.zip)) {
+      alert("You must enter values for all data fields!");
+      console.log("Inside if");
+      return;
+      }
+    
     $.post("/api/clients/new", newClient)
       // on success, run this callback
       .then(function(data) {
-        // log the data we found
         console.log(data);
-        // tell the user we're adding a character with an alert window
         alert("Client Added");
       });
 
 
-    // Clearing fields.
     $("#client_name").val("");
     $("#client_company").val("");
     $("#client_email").val("");

@@ -36,5 +36,39 @@
   <hr>
 
   <!-- START CODING HERE -->
+        <div class="container">
+                <div>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <td>Client ID#</td>
+                                <td>Name</td>
+                                <td>Email</td>
+                                <td>Phone</td>
+                                <td>Address</td>
+                                <td>City</td>
+                                <td>State</td>
+                                <td>Zip Code</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <div>
+                                {{#each client}}
+                                <tr>
+                                    <td>{{this.client_id}}</td>
+                                    <td>{{this.client_name}}</td>
+                                    <td>{{this.client_email}}</td>
+                                    <td>{{this.client_phone}}</td>
+                                    <td>{{this.client_address1}}</td>
+                                    <td>{{this.client_city}}</td>
+                                    <td>{{this.client_state}}</td>
+                                    <td>{{this.client_zip}}</td>
+                                </tr>
+                                {{/each}}
+                            </div>
+                        </tbody>
+                    </table>
+                </div>
+        </div>
 
 </div>

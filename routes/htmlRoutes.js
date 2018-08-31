@@ -27,7 +27,7 @@ module.exports = function(app) {
         client:data
       };
       console.log(hbsObject);
-      res.render("inventory_dashboard", hbsObject);
+      res.render("clients_dashboard", hbsObject);
     })
   });
 

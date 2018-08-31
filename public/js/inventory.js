@@ -3,16 +3,6 @@ var db = require("../models");
 
 module.exports = function(app) {
 
-  app.get("/api/inventory/new"),
-    function(req, res) {
-      db.Inventory.findAll({}).then(function(dbClients) {
-        res.json(dbInventory);
-      }).catch(function(err) {
-        console.log(err);
-        res.json(err);
-      });
-    };
-
   app.post("/api/inventory/new", function(req, res) {
     var inventory = req.body;
 
