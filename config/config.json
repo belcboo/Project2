@@ -2,14 +2,14 @@
   "development": {
     "username": "username",
     "password": "password",
-    "database": "rubyk_io",
+    "database": "rental_sys",
     "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
     "username": "username",
     "password": "password",
-    "database": "rubyk_io",
+    "database": "rental_sys",
     "host": "localhost",
     "dialect": "mysql",
     "logging": false
