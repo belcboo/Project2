@@ -1,5 +1,5 @@
 var db = require("../models");
-
+var path = require("path");
 var isAuthenticated = require('../helpers/isAuthenticated');
 
 module.exports = function(app) {
@@ -8,7 +8,7 @@ module.exports = function(app) {
     // if (req.user) {
     //   res.render("rental_dashboard")
     // };
-    res.render("index2");
+    res.sendFile(path.join(__dirname, "../public/login.html"));
   });
 
 
@@ -31,8 +31,12 @@ module.exports = function(app) {
     })
   });
 
+<<<<<<< HEAD
+  app.get("/inventory/dashboard", isAuthenticated, function(req, res) {
+=======
 
   app.get("/inventory/dashboard", function(req, res) {
+>>>>>>> 585b5deadb8aea4b17acc1c5304cdf01843194b8
     db.Inventory.findAll({}).then(function(data) {
       var hbsObject = {
         inventory: data
@@ -43,16 +47,25 @@ module.exports = function(app) {
   });
 
   app.get("/rental/dashboard", isAuthenticated, function(req, res) {
+
     res.render("rental_dashboard");
   });
 
+
   app.get("/rental/new", function(req, res) {
     db.Clients.findAll({}).then(function(data) {
-      var hbsObject = {
-        clients: data
-      };
-      console.log(hbsObject);
-      res.render("rental_new", hbsObject);
+      console.log(data)
+      var result1 = data;
+      db.Inventory.findAll({}).
+      then(function(data2) {
+        console.log(result1);
+        var hbsObject = {
+          clients: result1,
+          inventory: data2
+        };
+        console.log('this is the final obj'+hbsObject);
+        res.render("rental_new", hbsObject);
+      });
     });
   });
 

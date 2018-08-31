@@ -50,7 +50,7 @@ $(document).ready(function() {
     }
 
     if(!newMessage.subject || !newMessage.message){
-      $("#contactMsg").text("Please check the fields and try again.");
+      $("#emailHelp").text("Please check the fields and try again.");
       return;
     }
 
