@@ -1,7 +1,13 @@
 $(document).ready(function() {
 
 
-$("#title").text("New Inventory | RubykIO");
+$("#title").text("Add New Inventory | RubykIO");
+
+//Updates Menu Colors:
+$("#dashboardMenu").addClass('btn-outline-secondary');
+$("#rentalDrop").addClass('btn-outline-secondary');
+$("#clientDrop").addClass('btn-outline-secondary');
+$("#inventoryDrop").addClass('btn-outline-danger');
 
 
 $("#newInventorySubmit").on("click", function(event) {

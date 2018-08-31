@@ -1,7 +1,13 @@
 $(document).ready(function() {
 
   //Updates the title to match the actual page.
-  $("#title").text("Create Client | RubykIO");
+  $("#title").text("Add New Client | RubykIO");
+
+  //Updates Menu Colors:
+  $("#dashboardMenu").addClass('btn-outline-secondary');
+  $("#rentalDrop").addClass('btn-outline-secondary');
+  $("#clientDrop").addClass('btn-outline-danger');
+  $("#inventoryDrop").addClass('btn-outline-secondary');
 
   //On click event linked to the submit button.
   $("#newClientSubmit").on("click", function(event) {

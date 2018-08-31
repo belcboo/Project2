@@ -14,17 +14,22 @@ module.exports = function(app) {
   // the "isAuthenticated,". Make sure to enable it after you finish!
 
   // Loads Client > New Client
+  app.get("/dashboard", function(req, res) {
+    res.render("dashboard");
+  });
+
+
   app.get("/client/new", function(req, res) {
     res.render("clients_new");
   });
 
-  app.get("/dashboard", isAuthenticated, function(req, res) {
+  app.get("/client/list", isAuthenticated, function(req, res) {
     db.Clients.findAll({}).then(function(data){
       var hbsObject = {
         client:data
       };
       console.log(hbsObject);
-      res.render("dashboard", hbsObject);
+      res.render("clients_list", hbsObject);
     });
   });
 
@@ -34,7 +39,7 @@ module.exports = function(app) {
         inventory: data
       };
       console.log(hbsObject);
-      res.render("inventory_dashboard", hbsObject);
+      res.render("inventory_list", hbsObject);
     });
   });
 
