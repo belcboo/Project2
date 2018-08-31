@@ -37,4 +37,35 @@
 
   <!-- START CODING HERE -->
 
+          <div class="container">
+                <div>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <td>Product ID#</td>
+                                <td>Product Name</td>
+                                <td>Inventory Quantity</td>
+                                <td>Available Now</td>
+                                <td>Price Per Day(PPD)</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <div>
+                              {{#each inventory}}
+                                <tr>
+                                    <td>{{this.product_id}}</td>
+                                    <td>{{this.product_name}}</td>
+                                    <td>{{this.inventory_qty}}</td>
+                                    <td>{{this.available_inventory}}</td>
+                                    <td>{{this.product_image}}</td>
+                                    <td>{{this.rentalPrice_day}}</td>
+                                </tr>
+                              {{/each}}
+                            </div>
+                        </tbody>
+                    </table>
+                </div>
+        </div>
+    </div>
+
 </div>
