@@ -5,9 +5,6 @@ var isAuthenticated = require('../helpers/isAuthenticated');
 module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
-    // if (req.user) {
-    //   res.render("rental_dashboard")
-    // };
     res.sendFile(path.join(__dirname, "../public/login.html"));
   });
 
@@ -28,15 +25,10 @@ module.exports = function(app) {
       };
       console.log(hbsObject);
       res.render("inventory_dashboard", hbsObject);
-    })
+    });
   });
 
-<<<<<<< HEAD
   app.get("/inventory/dashboard", isAuthenticated, function(req, res) {
-=======
-
-  app.get("/inventory/dashboard", function(req, res) {
->>>>>>> 585b5deadb8aea4b17acc1c5304cdf01843194b8
     db.Inventory.findAll({}).then(function(data) {
       var hbsObject = {
         inventory: data
@@ -47,7 +39,6 @@ module.exports = function(app) {
   });
 
   app.get("/rental/dashboard", isAuthenticated, function(req, res) {
-
     res.render("rental_dashboard");
   });
 
@@ -71,6 +62,7 @@ module.exports = function(app) {
 
   app.get("/inventory/dashboard", isAuthenticated, function(req, res) {
     res.render("inventory_dashboard");
+  });
 
   app.get("/rental/dashboard", function(req, res) {
     res.render("rental_dashboard");
@@ -88,7 +80,7 @@ module.exports = function(app) {
       console.log(hbsObject);
       res.render("inventory_dashboard", hbsObject);
     })
-    
+
   });
 
   app.get("/login", (req, res) => {
