@@ -2,170 +2,182 @@
 
 
 
-  <!-- *************************************************************************
+    <!-- *************************************************************************
+              
+                MENU BUTTONS: This are the buttons that appear at the top. Each handlebars
+              
+                manage it's owns buttons, Needs to set the "active" class in the desired button.
+              
+                ****************************************************************************-->
 
-  MENU BUTTONS: This are the buttons that appear at the top. Each handlebars
+    <div class="row mt-2 mb-2">
 
-  manage it's owns buttons, Needs to set the "active" class in the desired button.
+        <div class="col-sm-12">
 
-  ****************************************************************************-->
+            <ul class="nav nav-pills justify-content-end">
 
-  <div class="row mt-2 mb-2">
+                <li class="nav-item">
 
-    <div class="col-sm-12">
+                    <a class="nav-link active btn-dark" href="#">ADD INVENTORY</a>
 
-      <ul class="nav nav-pills justify-content-end">
+                </li>
 
-        <li class="nav-item">
+                <li class="nav-item">
 
-          <a class="nav-link active btn-dark" href="#">ADD INVENTORY</a>
+                    <a class="nav-link disabled" href="/clients">CLIENTS</a>
 
-        </li>
+                </li>
 
-        <li class="nav-item">
+                <li class="nav-item">
 
-          <a class="nav-link disabled" href="/clients">CLIENTS</a>
+                    <a class="nav-link disabled" href="/rental">RENTAL</a>
 
-        </li>
+                </li>
 
-        <li class="nav-item">
+                <li class="nav-item">
 
-          <a class="nav-link disabled" href="/rental">RENTAL</a>
+                    <a class="nav-link disabled" href="/inventory">INVENTORY</a>
 
-        </li>
+                </li>
 
-        <li class="nav-item">
-
-          <a class="nav-link disabled" href="/inventory">INVENTORY</a>
-
-        </li>
-
-      </ul>
-
-    </div>
-
-  </div>
-
-
-
-  <!-- *************************************************************************
-
-  This row contains the body. All the body is  inside a jumbotron. Please refer
-
-  to the next comment to delete and add your code, Leave this code untouched.
-
-  ****************************************************************************-->
-
-  <div class="row">
-
-    <div class="col-sm-12">
-
-      <div class="jumbotron jumbotron-fluid">
-
-        <div class="ml-5 mr-5">
-
-          <!-- *************************************************
-
-            ADD YOUR CODE FOR THE BODY OF THE HANDLEBARS HERE.
-
-          ************************************************* -->
-
-<div class="container">
-
-        <div class="row">
-
-            <div class="col-lg-12">
-
-                <div class="feature title-page text-left" style="padding-bottom: 10px;">
-
-                    <h2 class="color-a">Client List</h2>
-
-                </div>
-
-                <!-- end build -->
-
-            </div>
-
-            <!-- end col -->
+            </ul>
 
         </div>
 
-        <div class="container">
+    </div>
 
-                <div>
 
-                    <table class="table table-striped">
 
-                        <thead>
+    <!-- *************************************************************************
+              
+                This row contains the body. All the body is  inside a jumbotron. Please refer
+              
+                to the next comment to delete and add your code, Leave this code untouched.
+              
+                ****************************************************************************-->
 
-                            <tr>
+    <div class="row">
 
-                                <td>Client ID#</td>
+        <div class="col-sm-12">
 
-                                <td>Client Name</td>
+            <div class="jumbotron jumbotron-fluid">
 
-                                <td>Client Company</td>
+                <div class="ml-5 mr-5">
 
-                                <td>Client Email</td>
+                    <!-- *************************************************
+              
+                          ADD YOUR CODE FOR THE BODY OF THE HANDLEBARS HERE.
+              
+                        ************************************************* -->
 
-                                <td>Client Phone</td>
+                    <div class="container">
 
-                            </tr>
+                        <div class="row">
 
-                        </thead>
+                            <div class="col-lg-12">
 
-                        <tbody>
+                                <div class="feature title-page text-left" style="padding-bottom: 10px;">
 
-                            <div>
+                                    <h2 class="color-a">Client List</h2>
 
-                                {{#each clients}}
+                                </div>
 
-                                <tr>
-
-                                    <td>{{clients.client_id}}</td>
-
-                                    <td>{{clients.client_name}}</td>
-
-                                    <td>{{clients.client_company}}</td>
-
-                                    <td>{{clients.client_email}}</td>
-
-                                    <td>{{clients.client_phone}}</td>
-
-                                </tr>
-
-                                {{/each}}
+                                <!-- end build -->
 
                             </div>
 
-                        </tbody>
+                            <!-- end col -->
 
-                    </table>
+                        </div>
+
+                        <hr>
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <label for="inputType" class="col-lg-2 control-label">Client Search</label>
+                                <div class="col-lg-10">
+                                    <input type="text" class="form-control" id="clientSearch">
+                                    <div class="col-lg-3" style="margin-left:3px">
+                                    </div>
+                                    <button type="button" class="btn btn-dark" id="searchButton" style="margin-top: 1%">Search</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="container">
+
+                            <div>
+
+                                <table class="table table-striped">
+
+                                    <thead>
+
+                                        <tr>
+
+                                            <td>Client ID#</td>
+
+                                            <td>Client Name</td>
+
+                                            <td>Client Company</td>
+
+                                            <td>Client Email</td>
+
+                                            <td>Client Phone</td>
+
+                                        </tr>
+
+                                    </thead>
+
+                                    <tbody>
+
+                                        <div>
+
+                                            {{#each clients}}
+
+                                            <tr>
+
+                                                <td>{{clients.client_id}}</td>
+
+                                                <td>{{clients.client_name}}</td>
+
+                                                <td>{{clients.client_company}}</td>
+
+                                                <td>{{clients.client_email}}</td>
+
+                                                <td>{{clients.client_phone}}</td>
+
+                                            </tr>
+
+                                            {{/each}}
+
+                                        </div>
+
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- *******************************************************
+              
+                           YOUR CODE FOR THE BODY OF THE HANDLEBAR SHOULD END HERE.
+              
+                        ******************************************************** -->
 
                 </div>
 
-        </div>
-
-    </div>
-
-    
-          <!-- *******************************************************
-
-             YOUR CODE FOR THE BODY OF THE HANDLEBAR SHOULD END HERE.
-
-          ******************************************************** -->
+            </div>
 
         </div>
 
-      </div>
-
     </div>
-
-  </div>
 
 </div>
-
-
 
 <!-- **************************************************
 
