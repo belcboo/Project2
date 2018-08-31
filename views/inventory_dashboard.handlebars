@@ -46,6 +46,7 @@
                                 <td>Product Name</td>
                                 <td>Inventory Quantity</td>
                                 <td>Available Now</td>
+                                <td>Product Image</td>
                                 <td>Price Per Day(PPD)</td>
                             </tr>
                         </thead>
@@ -57,7 +58,7 @@
                                     <td>{{this.product_name}}</td>
                                     <td>{{this.inventory_qty}}</td>
                                     <td>{{this.available_inventory}}</td>
-                                    <td>{{this.product_image}}</td>
+                                    <td><a href= {{this.product_image}}>Image</a></td>
                                     <td>{{this.rentalPrice_day}}</td>
                                 </tr>
                               {{/each}}
