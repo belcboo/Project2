@@ -55,5 +55,23 @@ module.exports = function(app) {
     });
   });
 
-};
+  //This Rout will work to display an item details nor create a new rental order.
+  app.get("api/inventory:id", function(req, res){
+    db.Inventory.findOne({
+      product_id: req.params.id
+    }).then(function(result){
+      return res.json(result);
+    });
 
+    //This Rout will work to display an client details nor create a new rental order.
+    app.get("api/client:id", function(req, res){
+      db.Inventory.findOne({
+        client_id: req.params.id
+      }).then(function(result){
+        return res.json(result);
+      });
+
+
+  });
+
+};
