@@ -35,7 +35,10 @@ navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:ho
     color: white;
 }
 
-
+.productQty{
+  width: 50px;
+  text-align: center;
+}
 
 /* // Small devices (landscape phones, 576px and up */
 

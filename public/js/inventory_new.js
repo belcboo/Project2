@@ -1,3 +1,18 @@
+var dashboardMenu = $("#dashboardMenu");
+var rentalDrop =   $("#rentalDrop");
+var clientDrop = $("#clientDrop");
+var inventoryDrop = $("#inventoryDrop");
+
+//Updates the title to match the actual page.
+$("#title").text("New Product | Rubyk.IO");
+
+//Updates Menu Colors:
+dashboardMenu.addClass('btn-outline-secondary');
+rentalDrop.addClass('btn-outline-secondary');
+clientDrop.addClass('btn-outline-secondary');
+inventoryDrop.addClass('btn-outline-danger');
+
+
 $(document).ready(function() {
 
 
@@ -21,9 +36,9 @@ $("#newInventorySubmit").on("click", function(event) {
     rentalPrice_day: $("#rentalPrice_day").val().trim(),
   };
 
-  if (!(newInventoryItem.product_name || 
+  if (!(newInventoryItem.product_name ||
     newInventoryItem.product_name ||
-    newInventoryItem.inventory_qty || 
+    newInventoryItem.inventory_qty ||
     newInventoryItem.available_inventory ||
     newInventoryItem.product_image ||
     newInventoryItem.rentalPrice_day)) {

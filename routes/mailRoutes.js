@@ -2,6 +2,7 @@ var mailgun = require('../config/mailgun');
 var key = mailgun.key;
 var domain = mailgun.domain;
 var contact = mailgun.contact;
+var from = mailgun.from;
 
 console.log(mailgun, key, domain);
 
@@ -14,7 +15,7 @@ module.exports = function(app) {
     });
 
     var data = {
-      from: 'Test User <no-reply@belcboo.com>',
+      from: from,
       to: contact,
       subject: req.body.subject,
       text: req.body.message + " Contact email: " + req.body.contact
