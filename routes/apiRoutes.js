@@ -62,6 +62,7 @@ module.exports = function(app) {
     }).then(function(result){
       return res.json(result);
     });
+  });  
 
     //This Rout will work to display an client details nor create a new rental order.
     app.get("api/client:id", function(req, res){
