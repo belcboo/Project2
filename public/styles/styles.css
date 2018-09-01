@@ -40,22 +40,39 @@ navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:ho
   text-align: center;
 }
 
+#logoRubyk{
+  height: 90px;
+}
 /* // Small devices (landscape phones, 576px and up */
 
 @media (min-width: 576px) {
   body, .dropdown-menu {
     font-size: 1rem;
   }
+
+  #logoRubyk{
+    height: 110px;
+  }
 }
 
 /* // Medium devices (tablets, 768px and up) */
 
-@media (min-width: 768px) {}
+@media (min-width: 768px) {
+
+}
 
 /* // Large devices (desktops, 992px and up) */
 
-@media (min-width: 992px) {}
+@media (min-width: 992px) {
+  #logoRubyk{
+    height: 150px;
+  }
+}
 
 /* // Extra large devices (large desktops, 1200px and up) */
 
-@media (min-width: 1200px) {}
+@media (min-width: 1200px) {
+  #logoRubyk{
+    height: 180px;
+  }
+}

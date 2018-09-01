@@ -109,7 +109,6 @@ $(document).ready(function() {
 
     grandTotal.text("ORDER TOTAL: USD$" + orderTotalFixed);
 
-
   });
 
 });
