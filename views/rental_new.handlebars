@@ -1,3 +1,5 @@
+<!-- <link rel="stylesheet" href="/styles/jquery.datetimepicker.min.css"> -->
+
 <div class="container">
 
   <!-- START CODING HERE -->
@@ -52,6 +54,12 @@
                 <input type="date" class="form-control" id="endDate" placeholder="">
               </div>
             </div>
+            <div class="form-row">
+              <div class="form-group col-sm-12 col-md-6">
+                <label for="client_company">Total Rental Days:</label>
+                <input type="text" class="form-control" id="totalDays" placeholder="">
+              </div>
+            </div>
             <div class="text-right">
               <button type="submit" class="btn btn-outline-danger" id="submitDates">APPLY DATES</button>
             </div>
@@ -61,7 +69,7 @@
               <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#inventoryModal" id="addProduct">ADD PRODUCT</button>
             </div>
             <br>
-            <table class="table table-striped bg-light">
+            <table id="prodtucsOrder" class="table table-striped bg-light">
               <thead>
                 <tr>
                   <td>Qty</td>
@@ -75,7 +83,7 @@
               </tbody>
             </table>
             <hr>
-            <h4 id="orderTotal">ORDER TOTAL:</h4>
+            <h4 id="grandTotal">ORDER TOTAL:</h4>
             <hr>
             <hr>
             <div class="text-right">
@@ -112,17 +120,16 @@
               <td>Contact Name</td>
               <td>Email</td>
               <td>Phone Number</td>
-              <td>Select</td>
             </tr>
           </thead>
           <tbody>
             <div>
               {{#each clients}}
                 <tr>
-                  <td id="cc{{this.client_id}}">{{this.client_company}}</td>
-                  <td id="cn{{this.client_id}}">{{this.client_name}}</td>
-                  <td id="ce{{this.client_id}}">{{this.client_email}}</td>
-                  <td id="cp{{this.client_id}}">{{this.client_phone}}</td>
+                  <td>{{this.client_company}}</td>
+                  <td>{{this.client_name}}</td>
+                  <td>{{this.client_email}}</td>
+                  <td>{{this.client_phone}}</td>
                   <td><button id="clientSelect" client-id="{{this.client_id}}" class="btn btn-outline-danger">Select</button></td>
                 </tr>
               {{/each}}
@@ -150,9 +157,10 @@
         </button>
       </div>
       <div class="modal-body">
-        <table class="table table-striped">
+        <table id="inventoryTbl" class="table table-striped text-center">
           <thead>
             <tr>
+              <td>Qty</td>
               <td>Product</td>
               <td>Available Stock</td>
               <td>Price/Day/USD</td>
@@ -162,9 +170,11 @@
             <div>
               {{#each inventory}}
                 <tr>
+                  <td><input type="number" class="form-control productQty" id="test{{this.product_id}}"></td>
                   <td>{{this.product_name}}</td>
                   <td>{{this.available_inventory}}</td>
                   <td>{{this.rentalPrice_day}}</td>
+                  <td><button id="productSelect" product-id="{{this.product_id}}" class="btn btn-outline-danger">Select</button></td>
                 </tr>
               {{/each}}
             </div>
@@ -183,5 +193,6 @@
 <!-- **************************************************
            EDIT TO POINT TO YOUR .JS HERE:
 *****************************************************-->
- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+<!-- <script type="text/javascript" src="/js/jquery.datetimepicker.min.js"></script> -->
 <script type="text/javascript" src="/js/rental_new.js"></script>
