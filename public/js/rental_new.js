@@ -84,6 +84,12 @@ $(document).ready(function() {
     var price = document.getElementById("inventoryTbl").rows[idBtn].cells[3].innerHTML;
     var total = totalDays.val() * price * productQty;
 
+    // Updates Order Total
+    orderTotal += total;
+
+    var priceFixed = (parseFloat(price)).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+    var totalFixed = (parseFloat(total)).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+    var orderTotalFixed = (parseFloat(orderTotal)).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
     //Creating new row to display item selected.
     var tbody = $("#tbody");
     var tr = $("<tr>");
@@ -95,15 +101,13 @@ $(document).ready(function() {
     td1.append(productQty);
     td2.append(product);
     td2.attr("product_id", idBtn);
-    td3.append(price);
-    td4.append(total);
+    td3.append("US$" + priceFixed);
+    td4.append("US$" + totalFixed);
     td4.attr("value",total);
     tr.append(td1, td2, td3, td4);
     tbody.append(tr);
 
-    // Updates Order Total
-    orderTotal += total;
-    grandTotal.text("ORDER TOTAL: USD$" + orderTotal);
+    grandTotal.text("ORDER TOTAL: USD$" + orderTotalFixed);
 
 
   });
