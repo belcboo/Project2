@@ -1,3 +1,18 @@
+var dashboardMenu = $("#dashboardMenu");
+var rentalDrop =   $("#rentalDrop");
+var clientDrop = $("#clientDrop");
+var inventoryDrop = $("#inventoryDrop");
+
+//Updates the title to match the actual page.
+$("#title").text("New Client | Rubyk.IO");
+
+//Updates Menu Colors:
+dashboardMenu.addClass('btn-outline-secondary');
+rentalDrop.addClass('btn-outline-secondary');
+clientDrop.addClass('btn-outline-danger');
+inventoryDrop.addClass('btn-outline-secondary');
+
+
 $(document).ready(function() {
 
   //Updates the title to match the actual page.

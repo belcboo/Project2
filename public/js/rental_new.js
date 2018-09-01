@@ -81,7 +81,7 @@ $(document).ready(function() {
     //Gets the values of the colums.
     var productQty = $("#inventoryModal #test"+idBtn).val().trim();
     var product = document.getElementById("inventoryTbl").rows[idBtn].cells[1].innerHTML;
-    var price = document.getElementById("inventoryTbl").rows[idBtn].cells[2].innerHTML;
+    var price = document.getElementById("inventoryTbl").rows[idBtn].cells[3].innerHTML;
     var total = totalDays.val() * price * productQty;
 
     //Creating new row to display item selected.
