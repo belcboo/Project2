@@ -43,11 +43,6 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/rental/dashboard", isAuthenticated, function(req, res) {
-    res.render("rental_dashboard");
-  });
-
-
   app.get("/rental/new", function(req, res) {
     db.Clients.findAll({}).then(function(data) {
       console.log(data)
@@ -63,14 +58,6 @@ module.exports = function(app) {
         res.render("rental_new", hbsObject);
       });
     });
-  });
-
-  app.get("/inventory/dashboard", isAuthenticated, function(req, res) {
-    res.render("inventory_dashboard");
-  });
-
-  app.get("/rental/dashboard", function(req, res) {
-    res.render("rental_dashboard");
   });
 
   app.get("/inventory/new", function(req, res) {
