@@ -76,6 +76,10 @@ module.exports = function(sequelize, DataTypes) {
       validate: {
         len: [1, 100]
       }
+    },
+    user: {
+      type: DataTypes.STRING,
+      allowNull: false
     }
   });
 
