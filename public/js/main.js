@@ -1,13 +1,12 @@
+var user = "";
+
+$.get("/api/userData").then(function(data) {
+  console.log(data);
+  user = data.email;
+  $("#loginID").text("Logged in as: " + data.email);
+});
 
 $(document).ready(function() {
-
-  var user;
-
-  $.get("/api/userData").then(function(data) {
-    console.log(data);
-    user = data.email;
-    $("#loginID").text("Logged in as: " + data.email);
-  });
 
   //Contact for Modal Support.
 

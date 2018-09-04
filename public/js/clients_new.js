@@ -29,7 +29,8 @@ $(document).ready(function() {
       address2: $("#client_address2").val().trim(),
       city: $("#client_city").val().trim(),
       state: $("#client_state").val().trim(),
-      zip: $("#client_zip").val().trim()
+      zip: $("#client_zip").val().trim(),
+      user: user
     };
 
     // send an AJAX POST-request with jQuery

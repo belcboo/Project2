@@ -6,13 +6,6 @@ module.exports = function(sequelize, DataTypes) {
       autoIncrement: true,
       primaryKey: true
     },
-    product_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      validate: {
-        len: [1, 100]
-      }
-    },
     client_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -20,12 +13,13 @@ module.exports = function(sequelize, DataTypes) {
         len: [1, 100]
       }
     },
-    product_name: {
+    date_start: {
       type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [1, 100]
-      }
+      allowNull: false
+    },
+    date_finish:{
+      type: DataTypes.STRING,
+      allowNull: false
     },
     rental_days: {
       type: DataTypes.INTEGER,
@@ -34,31 +28,39 @@ module.exports = function(sequelize, DataTypes) {
         len: [1, 100]
       }
     },
-    rental_qty: {
-      type: DataTypes.INTEGER,
+    orderTotal: {
+      type: DataTypes.DECIMAL(10,2),
       allowNull: false,
       validate: {
         len: [1, 100]
       }
     },
-    rental_total: {
-      type: DataTypes.INTEGER,
+    status: {
+      type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-        len: [1, 100]
-      }
+      defaultValue: "open"
+    },
+    type: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: "order"
+    },
+    user: {
+      type: DataTypes.STRING,
+      allowNull: false
     }
   });
 
   Rentals.associate = function(models) {
     // Associating clients with rentals
-    Rentals.hasMany(models.Clients, {});
+    Rentals.hasMany(models.Clients, {
+      onDelete: "cascade"
+    });
+    Rentals.hasMany(models.RentalsDetails,{
+      onDelete: "cascade"
+    });
   };
 
-  Rentals.associate = function(models) {
-    // Associating inventory with rentals
-    Rentals.hasMany(models.Inventory, {});
-  };
 
 
   return Rentals;

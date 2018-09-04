@@ -4,18 +4,18 @@ module.exports = (sequelize, DataTypes)=>{
     let User = sequelize.define("User", {
         email:{
             type:DataTypes.STRING,
-            allowNull:false, 
-            unique: true, 
+            allowNull:false,
+            unique: true,
             validate:{
                 isEmail: true
             }
-        }, 
+        },
         password:{
-            type: DataTypes.STRING, 
+            type: DataTypes.STRING,
             allowNull:false
         }
     });
-    
+
     User.prototype.validPassword = function(password){
         return bcrypt.compareSync(password,this.password);
     }

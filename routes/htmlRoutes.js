@@ -50,16 +50,13 @@ module.exports = function(app) {
 
   app.get("/rental/new", isAuthenticated, function(req, res) {
     db.Clients.findAll({}).then(function(data) {
-      console.log(data)
       var result1 = data;
       db.Inventory.findAll({}).
       then(function(data2) {
-        console.log(result1);
         var hbsObject = {
           clients: result1,
           inventory: data2
         };
-        console.log('this is the final obj'+hbsObject);
         res.render("rental_new", hbsObject);
       });
     });

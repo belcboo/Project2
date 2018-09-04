@@ -34,6 +34,7 @@ $("#newInventorySubmit").on("click", function(event) {
     available_inventory: $("#available_inventory").val().trim(),
     product_image: $("#product_image").val().trim(),
     rentalPrice_day: $("#rentalPrice_day").val().trim(),
+    user: user
   };
 
   if (!(newInventoryItem.product_name ||
