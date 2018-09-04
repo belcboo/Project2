@@ -12,4 +12,6 @@ $(document).ready(function() {
   $("#inventoryDrop").addClass('btn-outline-secondary');
 
 
+
+
 });

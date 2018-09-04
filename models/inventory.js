@@ -35,11 +35,15 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     rentalPrice_day: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.DECIMAL(10,2),
       allowNull: false,
       validate: {
         len: [1, 10]
       }
+    },
+    user: {
+      type: DataTypes.STRING,
+      allowNull: false
     }
   });
   Inventory.associate = function(models) {

@@ -1,13 +1,19 @@
+var dashboardMenu = $("#dashboardMenu");
+var rentalDrop =   $("#rentalDrop");
+var clientDrop = $("#clientDrop");
+var inventoryDrop = $("#inventoryDrop");
+
+//Updates the title to match the actual page.
+$("#title").text("New Client | Rubyk.IO");
+
+//Updates Menu Colors:
+dashboardMenu.addClass('btn-outline-secondary');
+rentalDrop.addClass('btn-outline-secondary');
+clientDrop.addClass('btn-outline-danger');
+inventoryDrop.addClass('btn-outline-secondary');
+
+
 $(document).ready(function() {
-
-  //Updates the title to match the actual page.
-  $("#title").text("Add New Client | RubykIO");
-
-  //Updates Menu Colors:
-  $("#dashboardMenu").addClass('btn-outline-secondary');
-  $("#rentalDrop").addClass('btn-outline-secondary');
-  $("#clientDrop").addClass('btn-outline-danger');
-  $("#inventoryDrop").addClass('btn-outline-secondary');
 
   //On click event linked to the submit button.
   $("#newClientSubmit").on("click", function(event) {
@@ -23,7 +29,8 @@ $(document).ready(function() {
       address2: $("#client_address2").val().trim(),
       city: $("#client_city").val().trim(),
       state: $("#client_state").val().trim(),
-      zip: $("#client_zip").val().trim()
+      zip: $("#client_zip").val().trim(),
+      user: user
     };
 
     // send an AJAX POST-request with jQuery
