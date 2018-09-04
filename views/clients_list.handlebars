@@ -1,101 +1,62 @@
- <div class="container">
-   <!-- SUB MENU -->
-   <div class="row mt-2 mb-2">
-     <div class="col-sm-12">
-       <ul class="nav nav-pills justify-content-center">
-         <li class="nav-item">
-           <a class="nav-link active btn-dark" href="/client/list">CLIENT LIST</a>
-         </li>
-         <li class="nav-item">
-           <a class="nav-link disabled" href="/client/new">NEW CLIENT</a>
-         </li>
-       </ul>
-     </div>
-   </div>
-  <hr>
-
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <label for="inputType" class= "justify-content-center" class="col-md-10 control-label">Client Search</label>
-                                    <input class="col-md-10" type="text" id="clientSearch" onkeyup="search()" placeholder="Search for names.." title="Type in a name">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="container">
-
-                            <div>
-
-                                <table id="clientTable" class="table table-striped">
-
-                                    <thead>
-
-                                        <tr>
-
-                                            <th>Client ID#</th>
-
-                                            <th>Client Name</th>
-
-                                            <th>Client Company</th>
-
-                                            <th>Client Email</th>
-
-                                            <th>Client Phone</th>
-
-                                        </tr>
-
-                                    </thead>
-
-                                    <tbody>
-
-                                        <div>
-
-                                            {{#each client}}
-
-                                            <tr>
-
-                                                <td>{{this.client_id}}</td>
-
-                                                <td>{{this.client_name}}</td>
-
-                                                <td>{{this.client_company}}</td>
-
-                                                <td>{{this.client_email}}</td>
-
-                                                <td>{{this.client_phone}}</td>
-
-                                            </tr>
-
-                                            {{/each}}
-
-                                        </div>
-
-                                    </tbody>
-
-                                </table>
-                                
-                            </div>
-
-                        </div>
-
-                    </div>
 
 
-                    <!-- *******************************************************
-              
-                           YOUR CODE FOR THE BODY OF THE HANDLEBAR SHOULD END HERE.
-              
-                        ******************************************************** -->
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="jumbotron jumbotron-fluid">
+        <div class="ml-5 mr-5">
 
-                </div>
-
+          <div class="float-sm-center float-md-right">
+            <form class="form-inline">
+              <input class="form-control mr-sm-3 mb-4" id="clientSearch" onkeyup="search()" type="search" placeholder="Filter by Name or Phone Number" aria-label="Search">
+            </form>
+          </div>
+          <!-- <div class="row">
+            <div class="col-sm-12 col-md-4 col">
+              <label for="inputType" class="justify-content-center" class="col-md-10 control-label">Client Search</label>
+              <input class="col-md-10" type="text" id="clientSearch" onkeyup="search()" placeholder="Search for names.." title="Type in a name">
             </div>
+          </div> -->
+
+
+          <div>
+            <table id="clientTable" class="table table-striped text-center">
+              <thead>
+                <tr>
+                  <th>COMPANY</th>
+                  <th>CONTACT NAME</th>
+                  <th>EMAIL</th>
+                  <th>PHONE</th>
+                  <th>ACTION</th>
+                </tr>
+              </thead>
+              <tbody>
+                <div>
+                  {{#each client}}
+                    <tr>
+                      <td>{{this.client_company}}</td>
+                      <td>{{this.client_name}}</td>
+                      <td>{{this.client_email}}</td>
+                      <td>{{this.client_phone}}</td>
+                      <td><a href="/client/details/{{this.client_id}}"><button id="clientInfo" client-id="{{this.client_id}}" class="btn btn-outline-danger">MORE</button></a></td>
+                    </tr>
+                    <a href="#"></a>
+                  {{/each}}
+                </div>
+              </tbody>
+            </table>
+          </div>
 
         </div>
-
+      </div>
     </div>
-
+  </div>
 </div>
+
+
+
+
+
 
 <!-- **************************************************
 
@@ -103,4 +64,4 @@
 
 *****************************************************-->
 
-<script type="text/javascript" src="/js/client.js"></script> 
+<script type="text/javascript" src="/js/client.js"></script>
