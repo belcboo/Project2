@@ -1,5 +1,6 @@
 var user = "";
 
+
 $.get("/api/userData").then(function(data) {
   console.log(data);
   user = data.email;
