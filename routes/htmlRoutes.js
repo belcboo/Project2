@@ -77,14 +77,35 @@ module.exports = function(app) {
 
 
   app.get("/rental/orders", isAuthenticated, function(req, res) {
-    db.Rentals.findAll({}).then(function(data) {
+    db.Rentals.findAll({
+      where: {
+        type: "order"
+      },
+      include: [db.Clients],
+      order:[['date_finish', 'ASC']]
+    }).then(function(data) {
       var hbsObject = {
-        rental: data
+        rental: data,
       };
       console.log(hbsObject);
       res.render("rental_orders", hbsObject);
     });
+  });
 
+
+  app.get("/rental/quotes", isAuthenticated, function(req, res) {
+    db.Rentals.findAll({
+      where: {
+        type: "quote"
+      },
+      include: [db.Clients],
+    }).then(function(data) {
+      var hbsObject = {
+        rental: data,
+      };
+      console.log(hbsObject);
+      res.render("rental_quotes", hbsObject);
+    });
   });
 
   app.get("/login", (req, res) => {
