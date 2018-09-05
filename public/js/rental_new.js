@@ -1,3 +1,42 @@
+
+function searchClient() {
+    var input, filter, table, tr, td, i, tds;
+    input = document.getElementById("clientSearch");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("clientsTbl");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+      td1 = tr[i].getElementsByTagName("td")[1];
+      td3 = tr[i].getElementsByTagName("td")[3]
+      if (td1 || td3) {
+        if (td1.innerHTML.toUpperCase().indexOf(filter) > -1 || td3.innerHTML.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+  }
+
+//Filter for inventory Modal
+function searchItem() {
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("itemSearch");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("inventoryTbl");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+};
+
 $(document).ready(function() {
   var dashboardMenu = $("#dashboardMenu");
   var rentalDrop = $("#rentalDrop");
@@ -17,23 +56,7 @@ $(document).ready(function() {
   var clientID;
 
 
-  function search() {
-    var input, filter, table, tr, td, i;
-    input = document.getElementById("itemSearch");
-    filter = input.value.toUpperCase();
-    table = document.getElementById("inventoryTable");
-    tr = table.getElementsByTagName("tr");
-    for (i = 0; i < tr.length; i++) {
-      td = tr[i].getElementsByTagName("td")[0];
-      if (td) {
-        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-          tr[i].style.display = "";
-        } else {
-          tr[i].style.display = "none";
-        }
-      }
-    }
-  }
+
 
   //Updates the title to match the actual page.
   $("#title").text("New Order | Rubyk.IO");
