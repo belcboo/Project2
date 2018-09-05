@@ -50,7 +50,7 @@ $("#newInventorySubmit").on("click", function(event) {
   $.post("/api/inventory/new", newInventoryItem).then(
     function() {
       console.log("added new inventory item");
-      alert("Inventory Item Added, Please, Review Inventory List.");
+      alert("New Product Added");
     }
   );
 
