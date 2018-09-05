@@ -20,7 +20,7 @@
           <form class="">
             <h4>CLIENT INFORMATION:</h4>
             <div class="text-right">
-              <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#clientsModal" id="addClient">SELECT CLIENT</button>
+              <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#clientsModal" id="addClient"> <i class="far fa-id-card mr-2"></i>SELECT CLIENT</button>
             </div>
             <div class="form-row">
               <div class="form-group col-sm-12 col-md-6">
@@ -61,21 +61,22 @@
               </div>
             </div>
             <div class="text-right">
-              <button type="submit" class="btn btn-outline-danger" id="submitDates">APPLY DATES</button>
+              <button type="submit" class="btn btn-outline-danger" id="submitDates"><i class="far fa-calendar-alt mr-2"></i>APPLY DATES</button>
             </div>
             <hr>
             <h4>PRODUCTS IN ORDER:</h4>
             <div class="text-right">
-              <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#inventoryModal" id="addProduct">ADD PRODUCT</button>
+              <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#inventoryModal" id="addProduct"><i class="fas fa-cart-plus mr-2"></i>ADD PRODUCT</button>
             </div>
             <br>
             <table id="prodtucsOrder" class="table table-striped bg-light">
               <thead>
                 <tr>
-                  <td>Qty</td>
-                  <td>Product</td>
-                  <td>USD Price/Day</td>
-                  <td>Total</td>
+                  <th>Qty</th>
+                  <th>Product</th>
+                  <th>USD Price/Day</th>
+                  <th>Total</th>
+                  <th>Action</th>
                 </tr>
               </thead>
               <tbody id="tbody">
@@ -87,9 +88,9 @@
             <hr>
             <hr>
             <div class="text-right">
-              <button type="submit" class="btn btn-outline-dark" id="submitQuote">SEND QUOTE</button>
+              <button type="submit" class="btn btn-outline-dark" id="submitQuote"><i class="far fa-envelope-open mr-2"></i>SEND QUOTE</button>
 
-              <button type="submit" class="btn btn-outline-danger" id="submitOrder">SUBMIT ORDER</button>
+              <button type="submit" class="btn btn-outline-danger ml-2" id="submitOrder"><i class="far fa-money-bill-alt mr-2"></i>SUBMIT ORDER</button>
             </div>
           </form>
           <!-- *******************************************************
@@ -137,7 +138,7 @@
                   <td>{{this.client_name}}</td>
                   <td>{{this.client_email}}</td>
                   <td>{{this.client_phone}}</td>
-                  <td><button id="clientSelect" client-id="{{this.client_id}}" class="btn btn-outline-danger">SELECT</button></td>
+                  <td><button id="clientSelect" client-id="{{this.client_id}}" class="btn btn-outline-danger"><i class="far fa-check-square"></i></button></td>
                 </tr>
               {{/each}}
             </div>
@@ -186,7 +187,7 @@
                   <td>{{this.product_name}}</td>
                   <td>{{this.available_inventory}}</td>
                   <td>{{this.rentalPrice_day}}</td>
-                  <td><button id="productSelect" product-id="{{this.product_id}}" class="btn btn-outline-danger">ADD</button></td>
+                  <td><button id="productSelect" product-id="{{this.product_id}}" class="btn btn-outline-danger"><i class="far fa-check-square"></i></button></td>
                 </tr>
               {{/each}}
             </div>
