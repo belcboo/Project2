@@ -8,6 +8,14 @@ module.exports = function (sequelize, DataTypes) {
       primaryKey: true
     },
 
+    product_category: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1, 100]
+      }
+    },
+
     product_name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -45,6 +53,38 @@ module.exports = function (sequelize, DataTypes) {
       allowNull: false,
       validate: {
         len: [10, 4]
+      }
+    },
+
+    product_vendor: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1, 100]
+      }
+    },
+
+    product_serialNumber: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1, 100]
+      }
+    },
+
+    product_warantyInfo: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+      validate: {
+        len: [1, 1000]
+      }
+    },
+
+    product_description: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+      validate: {
+        len: [1, 1000]
       }
     }
   });

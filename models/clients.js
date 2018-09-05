@@ -7,7 +7,7 @@ module.exports = function (sequelize, DataTypes) {
       autoIncrement: true,
       primaryKey: true
     },
-
+    
     client_name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -87,16 +87,16 @@ module.exports = function (sequelize, DataTypes) {
         len: [1, 100]
       }
     }
-});
-
-
-clients.associate = function (models) {
-  // Associating clients with s
-  // When an clients is deleted, also deletes any associated rentals
-  clients.belongsTo(models.rentals, {
-    onDelete: "cascade"
   });
-};
 
-return clients;
+
+  clients.associate = function (models) {
+    // Associating clients with s
+    // When an clients is deleted, also deletes any associated rentals
+    clients.belongsTo(models.rentals, {
+      onDelete: "cascade"
+    });
   };
+
+  return clients;
+};
