@@ -1,22 +1,21 @@
-
 function searchClient() {
-    var input, filter, table, tr, td, i, tds;
-    input = document.getElementById("clientSearch");
-    filter = input.value.toUpperCase();
-    table = document.getElementById("clientsTbl");
-    tr = table.getElementsByTagName("tr");
-    for (i = 0; i < tr.length; i++) {
-      td1 = tr[i].getElementsByTagName("td")[1];
-      td3 = tr[i].getElementsByTagName("td")[3]
-      if (td1 || td3) {
-        if (td1.innerHTML.toUpperCase().indexOf(filter) > -1 || td3.innerHTML.toUpperCase().indexOf(filter) > -1) {
-          tr[i].style.display = "";
-        } else {
-          tr[i].style.display = "none";
-        }
+  var input, filter, table, tr, td, i, tds;
+  input = document.getElementById("clientSearch");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("clientsTbl");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td1 = tr[i].getElementsByTagName("td")[1];
+    td3 = tr[i].getElementsByTagName("td")[3]
+    if (td1 || td3) {
+      if (td1.innerHTML.toUpperCase().indexOf(filter) > -1 || td3.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
       }
     }
   }
+}
 
 //Filter for inventory Modal
 function searchItem() {
@@ -37,6 +36,8 @@ function searchItem() {
   }
 };
 
+
+
 $(document).ready(function() {
   var dashboardMenu = $("#dashboardMenu");
   var rentalDrop = $("#rentalDrop");
@@ -53,6 +54,7 @@ $(document).ready(function() {
   var grandTotal = $("#grandTotal");
   var rowCounter = 0;
   var orderTotal = 0;
+  var counter = 1;
   var clientID;
 
 
@@ -114,6 +116,8 @@ $(document).ready(function() {
 
   });
 
+
+
   //On Click event to add client to order's form.
   $(document.body).on('click', "#productSelect", function(event) {
     event.preventDefault();
@@ -148,24 +152,26 @@ $(document).ready(function() {
     var td2 = $("<td>");
     var td3 = $("<td>");
     var td4 = $("<td>");
+    var td5 = $("<td>");
 
     td1.append(productQty);
     td2.append(product);
     td2.attr("product_id", idBtn);
     td3.append("US$" + priceFixed);
-    td3.attr("product_price", price)
+    td3.attr("product_price", price);
     td4.append("US$" + totalFixed);
-    td4.attr("product_total", total)
-    tr.append(td1, td2, td3, td4);
+    td4.attr("product_total", total);
+    td5.append('<button id="eraseRow" class="btn btn-outline-danger" type="button" rowid=' + counter + '> <i class="far fa-trash-alt"></i> <DELETE</button>');
+    tr.append(td1, td2, td3, td4, td5);
+    tr.attr("id", "rowid" + counter);
     tbody.append(tr);
 
     grandTotal.text("ORDER TOTAL: USD$" + orderTotalFixed);
     grandTotal.attr("orderTotal", orderTotal)
 
 
-    //Addes object to array that holds products.
-
-
+    //Increases counter by one to identify the rows.
+    counter++;
   });
 
   $("#submitOrder").on('click', function(event) {
@@ -231,6 +237,14 @@ $(document).ready(function() {
       });
     };
   }
+
+  //Deletes Row.
+  $(document.body).on('click', "#eraseRow", function(event) {
+    var row = $(this).attr("rowid");
+     document.getElementById("prodtucsOrder").deleteRow(row);
+  });
+
+
 
 
 
