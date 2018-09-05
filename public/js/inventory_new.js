@@ -34,7 +34,16 @@ $("#newInventorySubmit").on("click", function(event) {
   $.post("/api/inventory/new", newInventoryItem).then(
     function() {
       console.log("added new inventory item");
+      alert("Inventory Item Added, Please, Review Inventory List.");
     }
   );
+
+  //Clearing fields from form after submit.
+  $("#product_name").val("");
+  $("#inventory_qty").val("");
+  $("#available_inventory").val("");
+  $("#product_image").val("");
+  $("#rentalPrice_day").val("");
+
 });
 });
