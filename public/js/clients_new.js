@@ -26,6 +26,20 @@ $(document).ready(function() {
       zip: $("#client_zip").val().trim()
     };
 
+    if (!(newClient.name || 
+      newClient.company ||
+      newClient.email || 
+      newClient.phone ||
+      newClient.address1 ||
+      newClient.address2 ||
+      newClient.city ||
+      newClient.state ||
+      newClient.zip)) {
+      alert("You must enter values for all data fields!");
+      console.log("Inside if");
+      return;
+      }
+
     // send an AJAX POST-request with jQuery
     $.post("/api/clients/new", newClient)
       // on success, run this callback
