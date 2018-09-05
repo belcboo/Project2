@@ -24,9 +24,9 @@ module.exports = function(app) {
   });
 
   app.get("/client/list", isAuthenticated, function(req, res) {
-    db.Clients.findAll({}).then(function(data){
+    db.Clients.findAll({}).then(function(data) {
       var hbsObject = {
-        client:data
+        client: data
       };
       console.log(hbsObject);
       res.render("clients_list", hbsObject);
@@ -64,13 +64,26 @@ module.exports = function(app) {
   });
 
   app.get("/inventory/dashboard", isAuthenticated, function(req, res) {
-    db.Inventory.findAll({}).then(function(data){
+    db.Inventory.findAll({}).then(function(data) {
       var hbsObject = {
-        inventory:data
+        inventory: data
       };
       console.log(hbsObject);
       res.render("inventory_dashboard", hbsObject);
-    })
+    });
+
+  });
+
+
+
+  app.get("/rental/orders", isAuthenticated, function(req, res) {
+    db.Rentals.findAll({}).then(function(data) {
+      var hbsObject = {
+        rental: data
+      };
+      console.log(hbsObject);
+      res.render("rental_orders", hbsObject);
+    });
 
   });
 
