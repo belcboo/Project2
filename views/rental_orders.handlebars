@@ -13,9 +13,8 @@
               <input class="form-control mr-sm-3 mb-4" id="clientSearch" onkeyup="search()" type="search" placeholder="Filter by Name or Phone Number" aria-label="Search">
             </form>
           </div>
-
-          <div>
-            <table id="clientTable" class="table table-striped text-center">
+          <div class="table-responsive">
+            <table id="clientTable" class="table table-striped text-center thead-dark">
               <thead>
                 <tr>
                   <th>ORDER ID</th>
@@ -38,13 +37,11 @@
                       <td>{{this.status}}</td>
                       <td><a href="/order/details/{{this.rental_id}}"><button id="orderInfo" order-id="{{this.client_id}}" class="btn btn-outline-danger">MORE</button></a></td>
                     </tr>
-                    <a href="#"></a>
                   {{/each}}
                 </div>
               </tbody>
             </table>
           </div>
-
         </div>
       </div>
     </div>

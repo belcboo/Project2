@@ -15,7 +15,7 @@
           <!-- *************************************************
             ADD YOUR CODE FOR THE BODY OF THE HANDLEBARS HERE.
           ************************************************* -->
-          <h3 class=""><i class="fas fa-file-invoice-dollar mr-2"></i>RENTAL ORDER</h3>
+          <h3 class="">RENTAL ORDER</h3>
           <hr>
           <form class="">
             <h4>CLIENT INFORMATION:</h4>
@@ -69,20 +69,23 @@
               <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#inventoryModal" id="addProduct"><i class="fas fa-cart-plus mr-2"></i>ADD PRODUCT</button>
             </div>
             <br>
-            <table id="prodtucsOrder" class="table table-striped bg-light">
-              <thead>
-                <tr>
-                  <th>Qty</th>
-                  <th>Product</th>
-                  <th>USD Price/Day</th>
-                  <th>Total</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody id="tbody">
+            <div class="table-responsive">
+              <table id="prodtucsOrder" class="table table-striped bg-light">
+                <thead>
+                  <tr>
+                    <th>Qty</th>
+                    <th>Product</th>
+                    <th>USD Price/Day</th>
+                    <th>Total</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="tbody">
 
-              </tbody>
-            </table>
+                </tbody>
+              </table>
+            </div>
+
             <hr>
             <h4 id="grandTotal">ORDER TOTAL:</h4>
             <hr>
@@ -121,30 +124,31 @@
             <input class="form-control mr-sm-3 mb-4" id="clientSearch" onkeyup="searchClient()" type="search" placeholder="Filter by Name or Phone Number" aria-label="Search">
           </form>
         </div>
-        <table id="clientsTbl" class="table table-striped text-center">
-          <thead>
-            <tr>
-              <th>Company</th>
-              <th>Contact Name</th>
-              <th>Email</th>
-              <th>Phone Number</th>
-            </tr>
-          </thead>
-          <tbody>
-            <div>
-              {{#each clients}}
-                <tr>
-                  <td>{{this.client_company}}</td>
-                  <td>{{this.client_name}}</td>
-                  <td>{{this.client_email}}</td>
-                  <td>{{this.client_phone}}</td>
-                  <td><button id="clientSelect" client-id="{{this.client_id}}" class="btn btn-outline-danger"><i class="far fa-check-square"></i></button></td>
-                </tr>
-              {{/each}}
-            </div>
-          </tbody>
-        </table>
-
+        <div class="table-responsive">
+          <table id="clientsTbl" class="table table-striped text-center">
+            <thead>
+              <tr>
+                <th>Company</th>
+                <th>Contact Name</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+              </tr>
+            </thead>
+            <tbody>
+              <div>
+                {{#each clients}}
+                  <tr>
+                    <td>{{this.client_company}}</td>
+                    <td>{{this.client_name}}</td>
+                    <td>{{this.client_email}}</td>
+                    <td>{{this.client_phone}}</td>
+                    <td><button id="clientSelect" client-id="{{this.client_id}}" class="btn btn-outline-danger"><i class="far fa-check-square"></i></button></td>
+                  </tr>
+                {{/each}}
+              </div>
+            </tbody>
+          </table>
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
@@ -170,29 +174,32 @@
             <input class="form-control mr-sm-3 mb-4" id="itemSearch" onkeyup="searchItem()" type="search" placeholder="Filter by Product Name or Category" aria-label="Search">
           </form>
         </div>
-        <table id="inventoryTbl" class="table table-striped text-center">
-          <thead>
-            <tr>
-              <th>Qty</th>
-              <th>Product</th>
-              <th>Available Stock</th>
-              <th>Price/Day/USD</th>
-            </tr>
-          </thead>
-          <tbody>
-            <div>
-              {{#each inventory}}
-                <tr>
-                  <td><input type="number" class="form-control productQty" id="test{{this.product_id}}"></td>
-                  <td>{{this.product_name}}</td>
-                  <td>{{this.available_inventory}}</td>
-                  <td>{{this.rentalPrice_day}}</td>
-                  <td><button id="productSelect" product-id="{{this.product_id}}" class="btn btn-outline-danger"><i class="far fa-check-square"></i></button></td>
-                </tr>
-              {{/each}}
-            </div>
-          </tbody>
-        </table>
+        <div class="table-responsive">
+          <table id="inventoryTbl" class="table table-striped text-center">
+            <thead>
+              <tr>
+                <th>Qty</th>
+                <th>Product</th>
+                <th>Available Stock</th>
+                <th>Price/Day/USD</th>
+              </tr>
+            </thead>
+            <tbody>
+              <div>
+                {{#each inventory}}
+                  <tr>
+                    <td><input type="number" class="form-control productQty" id="test{{this.product_id}}"></td>
+                    <td>{{this.product_name}}</td>
+                    <td>{{this.available_inventory}}</td>
+                    <td>{{this.rentalPrice_day}}</td>
+                    <td><button id="productSelect" product-id="{{this.product_id}}" class="btn btn-outline-danger"><i class="far fa-check-square"></i></button></td>
+                  </tr>
+                {{/each}}
+              </div>
+            </tbody>
+          </table>
+        </div>
+
 
       </div>
       <div class="modal-footer">
