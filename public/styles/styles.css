@@ -40,7 +40,7 @@ navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:ho
   text-align: center;
 }
 
-#clientSearch{
+#clientSearch, #itemSearch{
   width: 25rem;
 }
 

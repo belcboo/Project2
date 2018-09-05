@@ -87,6 +87,8 @@
             <hr>
             <hr>
             <div class="text-right">
+              <button type="submit" class="btn btn-outline-dark" id="submitOrder">SEND QUOTE</button>
+
               <button type="submit" class="btn btn-outline-danger" id="submitOrder">SUBMIT ORDER</button>
             </div>
           </form>
@@ -113,6 +115,11 @@
         </button>
       </div>
       <div class="modal-body">
+        <div class="float-sm-center float-md-right">
+          <form class="form-inline">
+            <input class="form-control mr-sm-3 mb-4" id="clientSearch" onkeyup="searchClient()" type="search" placeholder="Filter by Name or Phone Number" aria-label="Search">
+          </form>
+        </div>
         <table id="clientsTbl" class="table table-striped text-center">
           <thead>
             <tr>
@@ -157,6 +164,11 @@
         </button>
       </div>
       <div class="modal-body">
+        <div class="float-sm-center float-md-right">
+          <form class="form-inline">
+            <input class="form-control mr-sm-3 mb-4" id="itemSearch" onkeyup="search()" type="search" placeholder="Filter by Product Name or Category" aria-label="Search">
+          </form>
+        </div>
         <table id="inventoryTbl" class="table table-striped text-center">
           <thead>
             <tr>
