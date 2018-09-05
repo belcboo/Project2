@@ -1,3 +1,6 @@
+//This functions needs to be outside the document ready in order to work.
+
+//Filter for modal client selection.
 function searchClient() {
   var input, filter, table, tr, td, i, tds;
   input = document.getElementById("clientSearch");
@@ -17,7 +20,7 @@ function searchClient() {
   }
 }
 
-//Filter for inventory Modal
+//Filter for modal product selection
 function searchItem() {
   var input, filter, table, tr, td, i;
   input = document.getElementById("itemSearch");
@@ -36,9 +39,9 @@ function searchItem() {
   }
 };
 
-
-
 $(document).ready(function() {
+
+  //Defining elements + variables
   var dashboardMenu = $("#dashboardMenu");
   var rentalDrop = $("#rentalDrop");
   var clientDrop = $("#clientDrop");
@@ -48,6 +51,8 @@ $(document).ready(function() {
   var formContact = $("#clientContac");
   var formEmail = $("#clientEmail");
   var formPhone = $("#clientPhone");
+  var formStartDate = $("#startDate");
+  var formEndDate = $("#endDate");
   var clientsModal = $("#clientsModal");
   var submitDates = $("#submitDates");
   var totalDays = $("#totalDays");
@@ -56,8 +61,6 @@ $(document).ready(function() {
   var orderTotal = 0;
   var counter = 1;
   var clientID;
-
-
 
 
   //Updates the title to match the actual page.
@@ -116,8 +119,6 @@ $(document).ready(function() {
 
   });
 
-
-
   //On Click event to add client to order's form.
   $(document.body).on('click', "#productSelect", function(event) {
     event.preventDefault();
@@ -174,11 +175,12 @@ $(document).ready(function() {
     counter++;
   });
 
+  //On Click event to send the order to the DB.
   $("#submitOrder").on('click', function(event) {
     event.preventDefault();
 
     console.log(user);
-
+    //Object to send in the query to DB.Rentals.
     var newOrder = {
       client: clientID,
       date_start: $("#startDate").val().trim(),
@@ -191,7 +193,7 @@ $(document).ready(function() {
 
 
 
-
+    //Validates that data entered by user is correct.
     if (!(newOrder.client || newOrder.date_finish || newOrder.date_start || newOrder.rental_days)) {
       alert("All fields are necesary");
       return;
@@ -199,21 +201,47 @@ $(document).ready(function() {
 
     console.log(newOrder);
 
-
+    //Send the general information of the order.
     $.post("/api/rental/new", newOrder).then(function(data) {
       console.log("1st");
       var lastID = data.rental_id;
       sendDetails(lastID);
     });
+  });
 
 
+  //This is gonna write the fields as a Quote.
+  $("#submitQuote").on('click', function(event) {
+    event.preventDefault();
 
+    //Object to send in the query to DB.Rentals.
+    var newQuote = {
+      client: clientID,
+      date_start: $("#startDate").val().trim(),
+      date_finish: $("#endDate").val().trim(),
+      rental_days: $("#totalDays").val().trim(),
+      orderTotal: orderTotal,
+      user: user,
+      type: "quote"
+    };
 
+    console.log(newQuote);
+    //Validates that data entered by user is correct.
+    if (!(newQuote.client || newQuote.date_finish || newQuote.date_start || newQuote.rental_days)) {
+      alert("All fields are necesary");
+      return;
+    }
+
+    //Send the general information of the order.
+    $.post("/api/rental/new", newQuote).then(function(data) {
+      var lastID = data.rental_id;
+      sendDetails(lastID);
+    });
   });
 
   function sendDetails(lastID) {
     var rowCounter = $("#prodtucsOrder tr").length;
-
+    //Loop that runs for every row of the Products Table.
     for (var i = 1; i < rowCounter; i++) {
       var rowQty = document.getElementById("prodtucsOrder").rows[i].cells[0].innerHTML;
       var rowProductId = document.getElementById("prodtucsOrder").rows[i].cells[1].getAttribute("product_id");
@@ -231,20 +259,60 @@ $(document).ready(function() {
         user: user
       }
 
+      //Sends every row of the table to the DB.Table RentalsID.
       $.post("/api/rental/newDetail", orderDetail).then(function(data2) {
-        console.log(orderDetail);
-        console.log("2nd");
       });
     };
+    //Displays alert confirming that the order was created Successfuly.
+    alert("Order Created Successfuly.");
+    //Calls the function to send email.
+    // sendConfirmation();
+    cleanup();
   }
 
-  //Deletes Row.
+  //Deletes Row in Products Table.
   $(document.body).on('click', "#eraseRow", function(event) {
     var row = $(this).attr("rowid");
-     document.getElementById("prodtucsOrder").deleteRow(row);
+    document.getElementById("prodtucsOrder").deleteRow(row);
   });
 
+  //Gets the value to send a confirmation email.
+  function sendConfirmation() {
+    var confirmEmail = $("#clientEmail").val().trim();
+    var table = $("#prodtucsOrder").val();
+    var confirmSubject = "New Order Confirmed | Rubyk.IO";
+    var confirmMessage =  "This is an email confirmation of your order.";
 
+    console.log(confirmEmail, confirmMessage, confirmSubject);
+    console.log(table);
+
+    //Sends Email of confirmation.
+    $.post("/api/confirmation", {
+      subject: confirmSubject,
+      message: confirmMessage,
+      email: confirmEmail,
+    }).then(function(data) {
+    }).catch(function(err) {
+      console.log(err);
+    })
+
+    cleanup();
+
+  };
+
+  //Cleans the fields of the order.
+  function cleanup (){
+    formCompany.val("");
+    formContact.val("");
+    formEmail.val("");
+    formPhone.val("");
+    formStartDate.val("");
+    formEndDate.val("");
+    totalDays.val("");
+    $("#tbody").children().remove();
+    grandTotal.val("ORDER TOTAL:");
+
+  }
 
 
 

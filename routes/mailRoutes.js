@@ -26,4 +26,22 @@ module.exports = function(app) {
     });
   });
 
+  app.post("/api/confirmation", function(req, res) {
+    var mailgun = require('mailgun-js')({
+      apiKey: key,
+      domain: domain
+    });
+    var body = req.body;
+    var data = {
+      from: from,
+      to: body.email,
+      subject: body.subject,
+      text: body.message
+    };
+
+    mailgun.messages().send(data, function(error, body) {
+      console.log(body);
+    });
+  });
+
 }
