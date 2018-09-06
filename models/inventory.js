@@ -28,7 +28,7 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     product_image: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING, 
       allowNull: false,
       validate: {
         len: [1, 100]

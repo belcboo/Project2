@@ -2,6 +2,7 @@ var dashboardMenu = $("#dashboardMenu");
 var rentalDrop =   $("#rentalDrop");
 var clientDrop = $("#clientDrop");
 var inventoryDrop = $("#inventoryDrop");
+var rentalNew = $("#rentalNew");
 
 //Updates the title to match the actual page.
 $("#title").text("New Product | Rubyk.IO");
@@ -11,6 +12,7 @@ dashboardMenu.addClass('btn-outline-secondary');
 rentalDrop.addClass('btn-outline-secondary');
 clientDrop.addClass('btn-outline-secondary');
 inventoryDrop.addClass('btn-outline-danger');
+
 
 
 $(document).ready(function() {

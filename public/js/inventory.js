@@ -28,4 +28,6 @@ $("#rentalDrop").addClass('btn-outline-secondary');
 $("#clientDrop").addClass('btn-outline-secondary');
 $("#inventoryDrop").addClass('btn-outline-danger');
 
+$("#clientCompany").val(data.client_id)
+
 });
