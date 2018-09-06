@@ -256,8 +256,8 @@ $(document).ready(function() {
     //Displays alert confirming that the order was created Successfuly.
     alert("Order Created Successfuly.");
     //Calls the function to send email.
-    // sendConfirmation();
-    cleanup();
+    sendConfirmation();
+    // cleanup();
   }
 
   //Deletes Row in Products Table.
