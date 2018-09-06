@@ -1,11 +1,21 @@
-module.exports = function(sequelize, DataTypes) {
-  var Inventory = sequelize.define("Inventory", {
+module.exports = function (sequelize, DataTypes) {
+  var inventory = sequelize.define("inventory", {
+
     product_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       autoIncrement: true,
       primaryKey: true
     },
+
+    product_category: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1, 100]
+      }
+    },
+
     product_name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -13,6 +23,7 @@ module.exports = function(sequelize, DataTypes) {
         len: [1, 100]
       }
     },
+
     inventory_qty: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -20,6 +31,7 @@ module.exports = function(sequelize, DataTypes) {
         len: [1, 100]
       }
     },
+
     available_inventory: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -27,6 +39,7 @@ module.exports = function(sequelize, DataTypes) {
         len: [1, 100]
       }
     },
+
     product_image: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -34,21 +47,53 @@ module.exports = function(sequelize, DataTypes) {
         len: [1, 100]
       }
     },
+
     rentalPrice_day: {
-      type: DataTypes.DECIMAL(10,2),
+      type: DataTypes.Decimal,
       allowNull: false,
       validate: {
-        len: [1, 10]
+        len: [10, 4]
       }
     },
-    user: {
+
+    product_vendor: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        len: [1, 100]
+      }
+    },
+
+    product_serialNumber: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1, 100]
+      }
+    },
+
+    product_warantyInfo: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+      validate: {
+        len: [1, 1000]
+      }
+    },
+
+    product_description: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+      validate: {
+        len: [1, 1000]
+      }
     }
   });
-  Inventory.associate = function(models) {
+
+  inventory.associate = function (models) {
     // Associating rentals with inventory
-    Inventory.belongsTo(models.Rentals, {});
+    inventory.belongsTo(models.rentals, {
+    });
   };
-  return Inventory;
+
+  return inventory;
 };
