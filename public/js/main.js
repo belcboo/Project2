@@ -40,7 +40,8 @@ $(document).ready(function() {
     $.post("/api/contact", {
       subject: subject,
       message: message,
-      contact: contact
+      contact: contact,
+      user: user
     }).then(function(data) {
       window.location.replace(data);
     }).catch(function(err) {

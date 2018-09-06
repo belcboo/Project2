@@ -18,7 +18,7 @@ module.exports = function(app) {
       from: from,
       to: contact,
       subject: req.body.subject,
-      text: req.body.message + " Contact email: " + req.body.contact
+      text: req.body.message + "\n\nContact phone: " + req.body.contact + "\nContact: Email: " + req.body.user
     };
 
     mailgun.messages().send(data, function(error, body) {
